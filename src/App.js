@@ -1,5 +1,5 @@
 import Home from "./pages/Home"
-import Slideshow from "./Slideshow";
+import Slideshow from "./components/Slideshow";
 
 function App() {
   return <Home />;

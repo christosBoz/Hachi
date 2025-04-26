@@ -7,10 +7,11 @@
 .slideShowSlide {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap; /* Prevent wrapping */
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  flex-wrap: nowrap;
+  align-items: stretch; /* make image/text stretch equally */
+  justify-content: space-between; /* spread edge to edge */
+
+  height: 100%; /* ensure full height matching content */
 }
 
 .ImageSection {
@@ -18,6 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white; /* optional for visibility */
+  padding: 20px;
 }
 
 .ImageSection img {
@@ -30,7 +33,7 @@
 .TextSection {
   flex: 1;
   background-color: #282c34;
-  padding: 20px;
+  padding: 30px;
   color: white;
   display: flex;
   flex-direction: column;

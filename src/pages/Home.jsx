@@ -3,7 +3,7 @@ import Banner from "../components/Banner";
 import Button from "../components/Button";
 import HachiLogoLong from "../assets/HachiLogoLong.png";
 import quotes from "../assets/quotes"; // Import the quotes array
-import Slideshow from "../Slideshow";
+import Slideshow from "../components/Slideshow";
 import './Home.css';
 
 function Home() {
