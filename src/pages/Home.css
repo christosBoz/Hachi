@@ -1,7 +1,7 @@
 .slideshow {
     width: 100%;
     max-width: 60vw;
-    margin: 50px auto; /* center horizontally and add space from Banner */
+    margin: 1vh auto; /* center horizontally and add space from Banner */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,17 +50,25 @@
   
   .TextSection h3 {
     font-weight: bold;
-    font-size: 50px;
+    font-size: 5vh;
 }
 .slick-prev:before,
 .slick-next:before {
   color: #6A39FE;
-  font-size: 25px;
+  font-size: 0;
+}
+.TextSection h1 {
+  font-weight: bold;
+  font-size: 3vh;
+}
+.TextSection p {
+  font-weight: lighter;
+  font-size: 2vh;
 }
 /* Default slashes */
 .slick-dots li {
     color: rgb(193, 120, 228);
-    font-size: 30px;
+    font-size: 1vh;
     font-weight: bold;
     transition: color 0.3s ease;
   }

@@ -27,7 +27,7 @@ function Home() {
             position: "absolute",
             left: "50%",
             transform: "translateX(-50%)", // This will center the span horizontally
-            fontSize: "20px",
+            fontSize: "2vh",
             color: "#6A39FE",
             whiteSpace: "nowrap",  // Prevent line break
             overflow: "hidden",    // Hide any overflow
@@ -49,34 +49,48 @@ function Home() {
         {/* Right-aligned section */}
         <div
           style={{
+            minHeight:"100%",
             marginLeft: "auto",
             display: "flex",
             alignItems: "center",
-            gap: "20px",
+            gap: "1vw",
           }}
         >
-          <span style={{ fontSize: "1rem", color: "#6A39FE" }}>For Teachers</span>
+          <span style={{ fontSize: "1.4vh", color: "#6A39FE" }}>For Teachers</span>
           <Button label="Log in" />
         </div>
       </Banner>
       <div 
       style={{
         textAlign: "center",
-        marginTop: "40px",
-        fontSize: "2rem",
+        marginTop: "3vh",
+        fontSize: "3vh",
         fontWeight: "bold",
-        color: "#6A39FE",
         opacity: 0,
         animation: "fadeIn 2s forwards"
       }}
     >
       LEARN YOUR WAY
-      <div style={{textAlign: "center", marginTop: "20px"}}>
-    <Button label="Try Now" />
+      
     </div>
+    <div 
+      style={{
+        textAlign: "center",
+        fontSize: "2vh",
+        fontWeight: "lighter",
+        opacity: 0,
+        animation: "fadeIn 2s forwards"
+      }}
+    >
+      Hachi and friends provide various ways for you to gain and retain knowledge. Swipe Below to learn more!
+      
     </div>
+    
   
       <Slideshow />
+      <div style={{textAlign: "center", marginTop: "6vh"}}>
+    <Button label="Try Now!" style={{fontSize:"2.5vh"}} />
+    </div>
     </div>
   );
 }

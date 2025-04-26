@@ -95,20 +95,19 @@ export default function Slideshow() {
       <div
         style={{
           position: "absolute",
-          bottom: "-30px",
           display: "flex",
           justifyContent: "center",
           width: "100%",
           listStyle: "none",
         }}
       >
-        <ul style={{ display: "flex", gap: "10px" }}> {dots} </ul>
+        <ul style={{ display: "flex", gap: "3vh" , paddingInlineStart:0}}> {dots} </ul>
       </div>
     ),
     customPaging: i => (
       <div
         style={{
-          fontSize: "24px",
+          fontSize: "2vh",
           fontWeight: "bold",
         }}
       >
