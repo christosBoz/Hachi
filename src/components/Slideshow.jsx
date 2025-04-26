@@ -2,39 +2,48 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-
+import flashcardLogo from "../assets/flashcard.png";
+import studyguideLogo from "../assets/studyguide.png"
 // Slide 1 Component
 function FlashcardSlide() {
   return (
     <div className="slideShowSlide">
       <div className="ImageSection">
-        <img alt="Flashcards" src="/images/flashcardoct.png" />
-      </div>
+      <img src={flashcardLogo} alt="Cat" style={{ height: "100%" }} />      </div>
       <div className="TextSection">
-        <h3>Flash Cards</h3>
-        <p>Learn with SRS Learning</p>
-        <p>Placeholder Text</p>
-        <p>Placeholder Text</p>
-        <p>Placeholder Text</p>
+        <h3 style={{color: "#5d3fe4", margin:0}}>Flash Cards</h3>
+        <h1 style={{margin:0}}>Spaced Repetition (SRS)</h1>
+        <p style={{marginTop:0}}>Faster, longer-lasting memory.</p>
+        <h1 style={{margin:0}}>Fully Customizable</h1>
+        <p style={{marginTop:0}}>Add images, audio, hints, mnemonic devices and more!</p>
+        <h1 style={{margin:0}}>Automically Synced</h1>
+        <p style={{marginTop:0}}>ick up where you left off. Anywhere, anytime, anyway.</p>
+        <h1 style={{margin:0}}>Easy Imports</h1>
+        <p style={{marginTop:0}}>ring your flash cards from other applications.</p>
       </div>
     </div>
   );
 }
 
 // Slide 2 Component
-function SlideTwo() {
+function StudyguidesSlide() {
   return (
     <div className="slideShowSlide">
+      <div className="TextSection" style={{marginLeft:"2%"}}>
+        <h3 style={{color: "#85beeb", margin:0}}>Study Guides</h3>
+        <h1 style={{margin:0}}>Spaced Repetition (SRS)</h1>
+        <p style={{marginTop:0}}>Faster, longer-lasting memory.</p>
+        <h1 style={{margin:0}}>Fully Customizable</h1>
+        <p style={{marginTop:0}}>Add images, audio, hints, mnemonic devices and more!</p>
+        <h1 style={{margin:0}}>Automically Synced</h1>
+        <p style={{marginTop:0}}>ick up where you left off. Anywhere, anytime, anyway.</p>
+        <h1 style={{margin:0}}>Easy Imports</h1>
+        <p style={{marginTop:0}}>ring your flash cards from other applications.</p>
+      </div>
       <div className="ImageSection">
-        <img alt="Flashcards" src="/images/flashcardoct.png" />
+        <img src={studyguideLogo} alt="Cat" style={{ height: "100%" }} />      
       </div>
-      <div className="TextSection">
-        <h3>Exams</h3>
-        <p>Learn with SRS Learning</p>
-        <p>Placeholder Text</p>
-        <p>Placeholder Text</p>
-        <p>Placeholder Text</p>
-      </div>
+      
     </div>
   );
 }
@@ -111,9 +120,8 @@ export default function Slideshow() {
   return (
     <Slider {...settings} className="slideshow">
       <FlashcardSlide />
-      <SlideTwo />
-      <SlideThree />
-      <SlideFour />
+      <StudyguidesSlide />
+
     </Slider>
   );
 }

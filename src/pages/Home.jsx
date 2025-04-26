@@ -56,7 +56,7 @@ function Home() {
           }}
         >
           <span style={{ fontSize: "1rem", color: "#6A39FE" }}>For Teachers</span>
-          <Button label="Log " />
+          <Button label="Log in" />
         </div>
       </Banner>
 
