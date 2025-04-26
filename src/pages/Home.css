@@ -69,4 +69,8 @@
   .slick-dots li.slick-active {
     color: #6A39FE; /* your purple or highlight color */
   }
-  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }

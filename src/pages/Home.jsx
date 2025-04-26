@@ -59,7 +59,23 @@ function Home() {
           <Button label="Log in" />
         </div>
       </Banner>
-
+      <div 
+      style={{
+        textAlign: "center",
+        marginTop: "40px",
+        fontSize: "2rem",
+        fontWeight: "bold",
+        color: "#6A39FE",
+        opacity: 0,
+        animation: "fadeIn 2s forwards"
+      }}
+    >
+      LEARN YOUR WAY
+      <div style={{textAlign: "center", marginTop: "20px"}}>
+    <Button label="Try Now" />
+    </div>
+    </div>
+  
       <Slideshow />
     </div>
   );
