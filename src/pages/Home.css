@@ -1,0 +1,39 @@
+.slideshow {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .slideShowSlide {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .ImageSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ImageSection img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .TextSection {
+    flex: 1;
+    background-color: #282c34;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
