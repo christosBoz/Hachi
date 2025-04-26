@@ -17,9 +17,9 @@ function FlashcardSlide() {
         <h1 style={{margin:0}}>Fully Customizable</h1>
         <p style={{marginTop:0}}>Add images, audio, hints, mnemonic devices and more!</p>
         <h1 style={{margin:0}}>Automically Synced</h1>
-        <p style={{marginTop:0}}>ick up where you left off. Anywhere, anytime, anyway.</p>
+        <p style={{marginTop:0}}>Pick up where you left off. Anywhere, anytime, anyway.</p>
         <h1 style={{margin:0}}>Easy Imports</h1>
-        <p style={{marginTop:0}}>ring your flash cards from other applications.</p>
+        <p style={{marginTop:0}}>Bring your flash cards from other applications.</p>
       </div>
     </div>
   );
