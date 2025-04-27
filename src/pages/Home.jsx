@@ -25,7 +25,7 @@ function Home() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "white", minHeight: "100vh", overflow: "hidden" }}>
+    <div style={{ backgroundColor: "white", minHeight: "94.5vh", overflow: "hidden" }}>
       {/* --- Banner (not scrollable) --- */}
       <Banner>
         <img src={HachiLogoLong} alt="Hachi Logo" style={{ height: "100%" }} />
@@ -69,7 +69,7 @@ function Home() {
       {/* --- Scroll Sections --- */}
       <div
         style={{
-          height: "calc(100vh)", 
+          height: "calc(94.5vh)", 
           overflowY: "scroll",
           scrollSnapType: "y mandatory",
           scrollBehavior: "smooth",
@@ -78,7 +78,7 @@ function Home() {
         {/* --- Section 1 --- */}
         <div
           style={{
-            height: "100vh", 
+            height: "94.5vh",
             scrollSnapAlign: "start",
             display: "flex",
             flexDirection: "column",
@@ -104,7 +104,7 @@ function Home() {
         <div
         ref={leaderboardRef}
         style={{
-          height: "100vh",
+          height: "94.5vh",
           scrollSnapAlign: "start",
           display: "flex",
           flexDirection: "column",
@@ -115,7 +115,7 @@ function Home() {
           color: "white",
         }}
       >
-        <h2 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>A FUN WAY TO LEARN</h2>
+        {/* <h2 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>A FUN WAY TO LEARN</h2> */}
 
         {/* <p style={{ maxWidth: "600px", textAlign: "center", fontSize: "1.2rem", margin: "0" }}>
           Hachi Leagues
@@ -127,11 +127,12 @@ function Home() {
           {/* Flex Row for Grid + Octopus */}
           <div
             style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "100%",
-              flexGrow: 1,
-              marginTop: "-10vh"
+                height: "100%",
+                display: "flex",
+                flexdirection: "row",
+                width: "100%",
+                /* flex-grow: 1; */
+                /* margin-top: -10vh; */
             }}
           >
             {/* Octopus or Side Text */}
@@ -142,10 +143,9 @@ function Home() {
                 justifyContent: "center",
                 alignItems: "center",
                 textAlign: "center",
-                padding: "10px",
               }}
             >
-              <img src={ranks} alt="ranks" style={{width: "70%", marginTop: "-10vh"}}/>
+              <img src={ranks} alt="ranks" style={{height:"100%"}}/>
             </div>
               {/* League Text Explaining it */}
               <div
@@ -178,7 +178,6 @@ function Home() {
             <div
               style={{
                 height:"100%",
-                width: "50%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -186,7 +185,7 @@ function Home() {
               }}
             >
 
-              <img src={ranksNewBlack} alt="ranks" style={{width:"70%"}}/>
+              <img src={ranksNewBlack} alt="ranks" style={{height:"100%"}}/>
             </div>
           
 
@@ -202,7 +201,7 @@ function Home() {
         {/* --- Section 3 (Future) --- */}
         <div
           style={{
-            height: "100vh",
+            height: "94.5vh",
             scrollSnapAlign: "start",
             display: "flex",
             flexDirection: "column",
