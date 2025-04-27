@@ -1,7 +1,10 @@
 .slideshow {
     width: 100%;
     max-width: 60vw;
+
     margin: 1vh auto; /* center horizontally and add space from Banner */
+
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,4 +84,9 @@
     to {
       opacity: 1;
     }
+  }
+
+  .leaderboard-container{
+    background-color: red;
+    
   }
