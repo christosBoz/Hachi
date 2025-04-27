@@ -78,7 +78,7 @@ function Home() {
         {/* --- Section 1 --- */}
         <div
           style={{
-            height: "100vh",
+            height: "100vh", 
             scrollSnapAlign: "start",
             display: "flex",
             flexDirection: "column",
