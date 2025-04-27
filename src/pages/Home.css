@@ -1,6 +1,10 @@
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
 .slideshow {
     width: 100%;
     max-width: 60vw;
+
 
     margin: 1vh auto; /* center horizontally and add space from Banner */
 
@@ -8,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
     /* min-height: 70vh; if you want vertical spacing too */
     
     
@@ -22,6 +27,7 @@
     gap: 0; /* remove gap if you want them flush together */
     height: 100%; /* ensure full height matching content */
     position: relative;
+    margin-top: -1vh;
     
   }
   
