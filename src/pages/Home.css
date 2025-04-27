@@ -61,6 +61,18 @@ body {
     font-weight: bold;
     font-size: 5vh;
 }
+
+.leaderboardInfo h3 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 5vh;
+}
+
+.leaderboardInfo p {
+  margin: 1vh;
+  font-size: 3vh;
+  font-weight: lighter;
+}
 .slick-prev:before,
 .slick-next:before {
   color: #6A39FE;
