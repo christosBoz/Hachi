@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3rBP+CGwRJo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\Hachi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\majdh\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+    "C:\\Users\\majdh\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
