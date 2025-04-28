@@ -4,29 +4,64 @@ using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add authentication services
+// Add services
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 })
-.AddCookie()
+.AddCookie(options =>
+{
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.None;
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = 401;
+        return Task.CompletedTask;
+    };
+})
 .AddGoogle(googleOptions =>
 {
-    googleOptions.ClientId = "YOUR_GOOGLE_CLIENT_ID";
-    googleOptions.ClientSecret = "YOUR_GOOGLE_CLIENT_SECRET";
+    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
+    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
 })
 .AddMicrosoftAccount(microsoftOptions =>
 {
-    microsoftOptions.ClientId = "YOUR_MICROSOFT_CLIENT_ID";
-    microsoftOptions.ClientSecret = "YOUR_MICROSOFT_CLIENT_SECRET";
+    microsoftOptions.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"]!;
+    microsoftOptions.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"]!;
 });
+
+builder.Services.AddAuthorization();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Enable authentication middleware
+app.UseCors("AllowAll");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/", () => "Hachi backend running!");
+app.MapControllers();
 
 app.Run();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // 👈 set EXACT frontend URL
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();                  // 👈 allow credentials
+    });
+});

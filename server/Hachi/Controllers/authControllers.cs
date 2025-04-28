@@ -32,33 +32,15 @@ namespace Hachi.Controllers
         }
 
         [HttpGet("GoogleResponse")]
-        public async Task<IActionResult> GoogleResponse()
+        public IActionResult GoogleResponse()
         {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            if (!result.Succeeded)
-                return BadRequest("Google login failed");
-
-            var claims = result.Principal?.Identities
-                .FirstOrDefault()?
-                .Claims.Select(c => new { c.Type, c.Value });
-
-            return Ok(claims);
+            return Redirect("http://localhost:3000/test");
         }
 
         [HttpGet("MicrosoftResponse")]
-        public async Task<IActionResult> MicrosoftResponse()
+        public IActionResult MicrosoftResponse()
         {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            if (!result.Succeeded)
-                return BadRequest("Microsoft login failed");
-
-            var claims = result.Principal?.Identities
-                .FirstOrDefault()?
-                .Claims.Select(c => new { c.Type, c.Value });
-
-            return Ok(claims);
+            return Redirect("http://localhost:3000/test");
         }
 
         [Authorize]
