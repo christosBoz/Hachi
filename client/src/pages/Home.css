@@ -108,3 +108,26 @@ body {
     background-color: red;
     
   }
+
+  .animatedGradient {
+    background: linear-gradient(
+      270deg,
+      #ff6ec4,
+      #7873f5,
+      #4ade80,
+      #facc15,
+      #f87171,
+      #ff6ec4
+    );
+    background-size: 1200% 1200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animatedGradientShift 8s ease infinite;
+  }
+  
+  @keyframes animatedGradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  

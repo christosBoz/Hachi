@@ -1590,19 +1590,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chris\\.nuget\\packages\\": {}
+    "C:\\Users\\majdh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chris\\Desktop\\Hachi\\hachi\\server\\Hachi\\Hachi.csproj",
+      "projectUniqueName": "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\Hachi.csproj",
       "projectName": "Hachi",
-      "projectPath": "C:\\Users\\chris\\Desktop\\Hachi\\hachi\\server\\Hachi\\Hachi.csproj",
-      "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chris\\Desktop\\Hachi\\hachi\\server\\Hachi\\obj\\",
+      "projectPath": "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\Hachi.csproj",
+      "packagesPath": "C:\\Users\\majdh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\majdh\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -1668,7 +1668,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
