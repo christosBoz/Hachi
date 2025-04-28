@@ -1,8 +1,8 @@
 import './Login.css'; // We will move the CSS into a separate file
 import { useEffect, useState } from "react";
 import monkeyorange from "../assets/monkeyorange.png"
-import bubbles from "../assets/bubbles.png"
-import octopus1 from "../assets/octopus1.png"
+// import bubbles from "../assets/bubbles.png"
+// import octopus1 from "../assets/octopus1.png"
 function BackgroundAnimation() {
     return (
         <div className="ocean-background">

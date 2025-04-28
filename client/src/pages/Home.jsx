@@ -11,6 +11,7 @@ import ranksNew from "../assets/ranksNew.png";
 import ranksNewBlack from "../assets/ranksNewBlack.png";
 import leaderboard from "../assets/leaderboard.png";
 import { TbTextSize } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [randomQuote, setRandomQuote] = useState({ quote: "", author: "" });
@@ -33,6 +34,7 @@ function Home() {
 }
 
 function TopBanner({ randomQuote }) {
+  const navigate = useNavigate();
   return (
     <Banner>
       <img src={HachiLogoLong} alt="Hachi Logo" style={{ height: "100%" }} />
@@ -67,7 +69,7 @@ function TopBanner({ randomQuote }) {
         }}
       >
         <span style={{ fontSize: "1.4vh", color: "#6A39FE" }}>For Teachers</span>
-        <Button label="Log in" />
+        <Button label="Log in" onClick={()=>navigate("/login")} />
       </div>
     </Banner>
   );
