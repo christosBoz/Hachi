@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Banner from "../components/Banner";
 import Button from "../components/Button";
 import HachiLogoLong from "../assets/HachiLogoLong.png";
@@ -11,6 +10,7 @@ import ranks from "../assets/ranks.png";
 import ranksNew from "../assets/ranksNew.png";
 import ranksNewBlack from "../assets/ranksNewBlack.png";
 import leaderboard from "../assets/leaderboard.png";
+import { TbTextSize } from "react-icons/tb";
 
 function Home() {
   const [randomQuote, setRandomQuote] = useState({ quote: "", author: "" });
@@ -33,7 +33,6 @@ function Home() {
 }
 
 function TopBanner({ randomQuote }) {
-  const navigate = useNavigate(); // <- create navigate function
   return (
     <Banner>
       <img src={HachiLogoLong} alt="Hachi Logo" style={{ height: "100%" }} />
@@ -68,7 +67,7 @@ function TopBanner({ randomQuote }) {
         }}
       >
         <span style={{ fontSize: "1.4vh", color: "#6A39FE" }}>For Teachers</span>
-        <Button label="Log in" onClick={()=>navigate("/login")} />
+        <Button label="Log in" />
       </div>
     </Banner>
   );
@@ -104,7 +103,7 @@ function LearnYourWaySection() {
         gap: "20px",
       }}
     >
-      <div style={{ textAlign: "center", marginTop: "-8vh", fontSize: "3vh", fontWeight: "bold", opacity: 0, animation: "fadeIn 2s forwards" }}>
+      <div style={{ textAlign: "center", fontSize: "3vh", fontWeight: "bold", opacity: 0, animation: "fadeIn 2s forwards" }}>
         LEARN YOUR WAY
       </div>
       <div style={{ textAlign: "center", fontSize: "2vh", fontWeight: "lighter", opacity: 0, animation: "fadeIn 2s forwards" }}>
@@ -170,7 +169,11 @@ function LeaderboardSection({ leaderboardRef }) {
           className="leaderboardInfo"
         >
           <div>
-            <h3>Compete Against Friends</h3>
+          <h3 style={{ fontSize: "6vh" }}>
+            Make learning feel like{" "}
+            <span className="animatedGradient">winning</span>!
+          </h3>            
+          <h3>Compete Against Friends</h3>
             <p>Challenge your friends in games and climb the leaderboards together.</p>
           </div>
           <div>
