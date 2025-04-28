@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Banner from "../components/Banner";
 import Button from "../components/Button";
 import HachiLogoLong from "../assets/HachiLogoLong.png";
@@ -32,6 +33,7 @@ function Home() {
 }
 
 function TopBanner({ randomQuote }) {
+  const navigate = useNavigate(); // <- create navigate function
   return (
     <Banner>
       <img src={HachiLogoLong} alt="Hachi Logo" style={{ height: "100%" }} />
@@ -66,7 +68,7 @@ function TopBanner({ randomQuote }) {
         }}
       >
         <span style={{ fontSize: "1.4vh", color: "#6A39FE" }}>For Teachers</span>
-        <Button label="Log in" />
+        <Button label="Log in" onClick={()=>navigate("/login")} />
       </div>
     </Banner>
   );
