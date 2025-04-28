@@ -1,18 +1,22 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { UserProvider } from "./contexts/UserContext"; // <-- import the User Context
+import Home from "./pages/Home";
+import Login from "./pages/LogIn"; // <--- correct casing (match your folder/filename)
+import Test from "./pages/test";   // <--- correct casing (Test, not test)
+import Slideshow from "./components/Slideshow"; // You imported this but not used yet
 
- import Slideshow from "./components/Slideshow";
- import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
- import Home from "./pages/Home";
- import Login from "./pages/LogIn";
- 
- function App() {
-   return (
-     <Router>
-       <Routes>
-         <Route path="/" element={<Home />} />
-         <Route path="/login" element={<Login />} />
-       </Routes>
-     </Router>
-   );
- }
- 
- export default App;
+function App() {
+  return (
+    <UserProvider> {/* Provide user context to whole app */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/test" element={<Test />} />
+        </Routes>
+      </Router>
+    </UserProvider>
+  );
+}
+
+export default App;

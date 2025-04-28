@@ -1,22 +1,15 @@
-import './Login.css'; // We will move the CSS into a separate file
+import './Login.css';
 import { useEffect, useState } from "react";
-import monkeyorange from "../assets/monkeyorange.png"
-// import bubbles from "../assets/bubbles.png"
-// import octopus1 from "../assets/octopus1.png"
+import monkeyorange from "../assets/monkeyorange.png";
+
 function BackgroundAnimation() {
     return (
         <div className="ocean-background">
-            {/* <img src={bubbles} className="bubbles-background" alt="bubbles" />
-            <img src={octopus1} className="octopus" alt="octopus" />
-            <img src={octopus1} className="octopus" alt="octopus" />
-            <img src={octopus1} className="octopus" alt="octopus" />
-            <img src={octopus1} className="octopus" alt="octopus" /> */}
-
-            {/* Add more images if you want */}
+            {/* You can add ocean-related animation images here */}
         </div>
     );
 }
-// Styles for the buttons
+
 const buttonStyle = {
     display: "flex",
     alignItems: "center",
@@ -32,11 +25,18 @@ const buttonStyle = {
     boxShadow: "0px 2px 4px rgba(0,0,0,0.1)"
 };
 
-// Styles for icons inside the buttons
 const iconStyle = {
     marginRight: "10px"
 };
 
+// 👉 New: Functions to handle clicking buttons
+function handleGoogleLogin() {
+    window.location.href = "http://localhost:5138/api/auth/login/google"; // updated
+}
+
+function handleMicrosoftLogin() {
+    window.location.href = "http://localhost:5138/api/auth/login/microsoft"; // updated
+}
 
 function MethodPicker() {
     return (
@@ -49,7 +49,7 @@ function MethodPicker() {
             position: "absolute",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%, -50%)", // Center it perfectly
+            transform: "translate(-50%, -50%)",
             boxShadow: "0px 4px 12px rgba(0,0,0,0.2)",
             textAlign: "center",
             minWidth: "300px",
@@ -57,17 +57,20 @@ function MethodPicker() {
             <h1 style={{ color: "#b300ff", marginBottom: "10px" }}>Hachi</h1>
             <p style={{ color: "#b300ff", marginBottom: "30px" }}>Welcome<br />Sign in with the following methods</p>
 
-            <div style={buttonStyle}>
+            {/* Google */}
+            <div style={buttonStyle} onClick={handleGoogleLogin}>
                 <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google" style={iconStyle} />
                 Continue with Google
             </div>
 
+            {/* Apple */}
             <div style={buttonStyle}>
                 <img src="https://img.icons8.com/ios-filled/24/000000/mac-os.png" alt="Apple" style={iconStyle} />
                 Continue with Apple
             </div>
 
-            <div style={buttonStyle}>
+            {/* Microsoft */}
+            <div style={buttonStyle} onClick={handleMicrosoftLogin}>
                 <img src="https://img.icons8.com/color/24/000000/microsoft.png" alt="Microsoft" style={iconStyle} />
                 Continue with Microsoft
             </div>
@@ -75,15 +78,11 @@ function MethodPicker() {
     );
 }
 
-
-
 function Login() {
     return (
         <div style={{ backgroundColor: "#3C79FF", minHeight: "100vh", overflow: "hidden" }}>
-            
-        <BackgroundAnimation />
+            <BackgroundAnimation />
             <MethodPicker />
-            
         </div>
     );
 }
