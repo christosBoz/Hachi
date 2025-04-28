@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using DotNetEnv;
-Env.Load(); // this loads the .env file
+Env.Load("../../.env"); ; // this loads the .env file
 var builder = WebApplication.CreateBuilder(args);
 
 // Load environment variables
