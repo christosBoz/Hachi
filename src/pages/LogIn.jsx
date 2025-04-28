@@ -81,7 +81,7 @@ function Login() {
     return (
         <div style={{ backgroundColor: "#3C79FF", minHeight: "100vh", overflow: "hidden" }}>
             
-            <BackgroundAnimation />
+        <BackgroundAnimation />
             <MethodPicker />
             
         </div>
