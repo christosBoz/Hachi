@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\Hachi.csproj": {}
+    "C:\\Users\\chris\\Desktop\\Hachi\\hachi\\server\\Hachi\\Hachi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\Hachi.csproj": {
+    "C:\\Users\\chris\\Desktop\\Hachi\\hachi\\server\\Hachi\\Hachi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\Hachi.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Hachi\\hachi\\server\\Hachi\\Hachi.csproj",
         "projectName": "Hachi",
-        "projectPath": "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\Hachi.csproj",
-        "packagesPath": "C:\\Users\\majdh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\majdh\\OneDrive\\Documents\\Hachi\\server\\Hachi\\obj\\",
+        "projectPath": "C:\\Users\\chris\\Desktop\\Hachi\\hachi\\server\\Hachi\\Hachi.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\Desktop\\Hachi\\hachi\\server\\Hachi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\majdh\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -44,6 +44,18 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.AspNetCore.Authentication.MicrosoftAccount": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.AspNetCore.Authentication.OAuth": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.3, )"
@@ -68,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
