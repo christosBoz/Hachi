@@ -1,8 +1,19 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
-
+using DotNetEnv;
+Env.Load(); // this loads the .env file
 var builder = WebApplication.CreateBuilder(args);
+
+// Load environment variables
+builder.Configuration.AddEnvironmentVariables();
+
+// Read secrets from environment variables or appsettings.json fallback
+var googleClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID") ?? builder.Configuration["Authentication:Google:ClientId"];
+var googleClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET") ?? builder.Configuration["Authentication:Google:ClientSecret"];
+
+var microsoftClientId = Environment.GetEnvironmentVariable("MICROSOFT_CLIENT_ID") ?? builder.Configuration["Authentication:Microsoft:ClientId"];
+var microsoftClientSecret = Environment.GetEnvironmentVariable("MICROSOFT_CLIENT_SECRET") ?? builder.Configuration["Authentication:Microsoft:ClientSecret"];
 
 // Add services
 builder.Services.AddCors(options =>
@@ -32,13 +43,13 @@ builder.Services.AddAuthentication(options =>
 })
 .AddGoogle(googleOptions =>
 {
-    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
-    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
+    googleOptions.ClientId = googleClientId!;
+    googleOptions.ClientSecret = googleClientSecret!;
 })
 .AddMicrosoftAccount(microsoftOptions =>
 {
-    microsoftOptions.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"]!;
-    microsoftOptions.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"]!;
+    microsoftOptions.ClientId = microsoftClientId!;
+    microsoftOptions.ClientSecret = microsoftClientSecret!;
 });
 
 builder.Services.AddAuthorization();
@@ -47,21 +58,8 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 app.UseCors("AllowAll");
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.WithOrigins("http://localhost:3000") // 👈 set EXACT frontend URL
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();                  // 👈 allow credentials
-    });
-});
