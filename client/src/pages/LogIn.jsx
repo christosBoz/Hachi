@@ -63,12 +63,6 @@ function MethodPicker() {
                 Continue with Google
             </div>
 
-            {/* Apple */}
-            <div style={buttonStyle}>
-                <img src="https://img.icons8.com/ios-filled/24/000000/mac-os.png" alt="Apple" style={iconStyle} />
-                Continue with Apple
-            </div>
-
             {/* Microsoft */}
             <div style={buttonStyle} onClick={handleMicrosoftLogin}>
                 <img src="https://img.icons8.com/color/24/000000/microsoft.png" alt="Microsoft" style={iconStyle} />
