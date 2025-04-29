@@ -4,13 +4,27 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;  // Add this line to use ClaimTypes
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;  // Make sure this namespace is included
 
 namespace Hachi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
-    {
+            public class AuthController : ControllerBase
+        {
+            private readonly HttpClient _httpClient;
+            private readonly ILogger<AuthController> _logger;  // Inject ILogger here
+
+            public AuthController(HttpClient httpClient, ILogger<AuthController> logger)
+            {
+                _httpClient = httpClient;
+                _logger = logger ?? throw new ArgumentNullException(nameof(logger)); // Ensure the logger is not null
+            }
+
+
         [HttpGet("login/google")]
         public IActionResult GoogleLogin()
         {
@@ -32,46 +46,68 @@ namespace Hachi.Controllers
         }
 
         [HttpGet("GoogleResponse")]
-<<<<<<< HEAD
-        public async Task<IActionResult> GoogleResponse()
+    public async Task<IActionResult> GoogleResponse()
+    {
+        // Log the start of the method
+        _logger.LogInformation("Starting GoogleResponse method.");
+
+        var authenticateResult = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        if (!authenticateResult.Succeeded)
+            return Unauthorized();
+
+        var claims = authenticateResult.Principal?.Identities.FirstOrDefault()?.Claims;
+        var email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+        if (string.IsNullOrEmpty(email))
         {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            if (!result.Succeeded)
-                return BadRequest("Google login failed");
-
-            var claims = result.Principal?.Identities
-                .FirstOrDefault()?
-                .Claims.Select(c => new { c.Type, c.Value });
-
-            return Ok(claims);
+            _logger.LogWarning("No email claim found for the user.");
+            return Unauthorized(new { message = "No email claim found" });
         }
 
-        [HttpGet("MicrosoftResponse")]
-        public async Task<IActionResult> MicrosoftResponse()
-        {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        _logger.LogInformation("Email found: {Email}", email);
 
-            if (!result.Succeeded)
-                return BadRequest("Microsoft login failed");
+        // Make an internal API call to check if the user exists
+        var userExistsResponse = await _httpClient.GetAsync($"http://localhost:5138/api/account/exists?email={email}");
 
-            var claims = result.Principal?.Identities
-                .FirstOrDefault()?
-                .Claims.Select(c => new { c.Type, c.Value });
-
-            return Ok(claims);
-=======
-        public IActionResult GoogleResponse()
+        if (userExistsResponse.IsSuccessStatusCode)
         {
             return Redirect("http://localhost:3000/test");
         }
 
-        [HttpGet("MicrosoftResponse")]
-        public IActionResult MicrosoftResponse()
+        return Redirect("http://localhost:3000/fsu");
+    }
+
+    [HttpGet("MicrosoftResponse")]
+    public async Task<IActionResult> MicrosoftResponse()
+    {
+        // Log the start of the method
+        _logger.LogInformation("Starting MicrosoftResponse method.");
+
+        var authenticateResult = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        if (!authenticateResult.Succeeded)
+            return Unauthorized();
+
+        var claims = authenticateResult.Principal?.Identities.FirstOrDefault()?.Claims;
+        var email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+        if (string.IsNullOrEmpty(email))
+        {
+            _logger.LogWarning("No email claim found for the user.");
+            return Unauthorized(new { message = "No email claim found" });
+        }
+
+        _logger.LogInformation("Email found: {Email}", email);
+
+        // Make an internal API call to check if the user exists
+        var userExistsResponse = await _httpClient.GetAsync($"http://localhost:5138/api/account/exists?email={email}");
+
+        if (userExistsResponse.IsSuccessStatusCode)
         {
             return Redirect("http://localhost:3000/test");
->>>>>>> 33d733b34e202c863a4adcae8975c229342d61cb
         }
+
+        return Redirect("http://localhost:3000/fsu");
+    }
 
         [Authorize]
         [HttpGet("profile")]

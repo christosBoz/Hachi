@@ -190,41 +190,46 @@ namespace Hachi.Controllers
 
         // Check if the user exists in the database (after OAuth login)
         [HttpGet("exists")]
-        public async Task<IActionResult> CheckUserExists()
-        {
-            // Log the start of the method
-            _logger.LogInformation("Starting CheckUserExists method.");
+public async Task<IActionResult> CheckUserExists([FromQuery] string email)
+{
+    // Log the start of the method
+    _logger.LogInformation("Starting CheckUserExists method.");
 
-            var email = User.FindFirst(ClaimTypes.Email)?.Value;
-            
-            // Log email extraction step
-            if (email == null)
-            {
-                _logger.LogWarning("No email claim found for the user.");
-                return Unauthorized();
-            }
-            else
-            {
-                _logger.LogInformation("Email found: {Email}", email); // Log the email found
-            }
+    if (string.IsNullOrEmpty(email))
+    {
+        email = User.FindFirst(ClaimTypes.Email)?.Value; // Try to extract from the user's claims if not passed as query param
+    }
 
-            // Log the database query step
-            _logger.LogInformation("Querying the database for the user with email: {Email}", email);
+    // Log email extraction step
+    if (email == null)
+    {
+        _logger.LogWarning("No email claim found for the user.");
+        return Unauthorized();
+    }
+    else
+    {
+        _logger.LogInformation("Email found: {Email}", email); // Log the email found
+    }
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+    // Log the database query step
+    _logger.LogInformation("Querying the database for the user with email: {Email}", email);
 
-            // Check if the user exists
-           if (user == null)
-            {
-                _logger.LogInformation("No user found with email: {Email}", email);
-                return Ok(new { message = "User does not exist, please complete your profile." });
-            }
+    var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
-            // If user exists, log the user information (be mindful of logging sensitive data like passwords)
-            _logger.LogInformation("User found: {Username}", user.Username);
+    // Check if the user exists
+    if (user == null)
+    {
+        _logger.LogInformation("No user found with email: {Email}", email);
+        return Ok(new { message = "User does not exist, please complete your profile." });
+    }
 
-            return Ok(new { message = "User exists", user });
-        }
+    // If user exists, log the user information
+    _logger.LogInformation("User found: {Username}", user.Username);
+
+    return Ok(new { message = "User exists", user });
+}
+
+
         [HttpGet("check-username/{username}")]
         public async Task<IActionResult> CheckUsername(string username)
         {
@@ -237,5 +242,28 @@ namespace Hachi.Controllers
 
             return Ok(new { message = "Username is available" });
         }
+
+        [HttpGet("profile")]
+public async Task<IActionResult> Profile()
+{
+    var email = User.FindFirst(ClaimTypes.Email)?.Value;
+
+    if (email == null)
+    {
+        return Unauthorized(new { message = "User is not authenticated." });
+    }
+
+    // Find the user by email
+    var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+    if (user == null)
+    {
+        return NotFound(new { message = "User not found." });
+    }
+
+    // Return the user data
+    return Ok(new { user });
+}
+
     }
 }

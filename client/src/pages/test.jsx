@@ -6,7 +6,7 @@ function Test() {
     const { user, setUser } = useUser();
     const navigate = useNavigate();
     
-    // State to track if the user exists or needs to complete their profile
+    // State to track if the user needs to complete their profile
     const [userStatus, setUserStatus] = useState(null);
     const [message, setMessage] = useState("");
     
@@ -16,40 +16,36 @@ function Test() {
     const [school, setSchool] = useState("");
 
     useEffect(() => {
-        async function checkUserExists() {
+        async function fetchUserProfile() {
             try {
-                const response = await fetch("http://localhost:5138/api/account/exists", {
+                const response = await fetch("http://localhost:5138/api/account/profile", {
                     credentials: "include", // Include session or authentication cookies
                 });
                 
                 if (response.ok) {
                     const data = await response.json();
-                    
-                    // Check message from backend
-                    if (data.message === "User exists") {
-                        console.log("User exists:", data.user);
-                        setUserStatus("exists"); // Set the status if the user exists
-                        setUser(data.user); // Store the user data
-                    } else if (data.message === "User does not exist, please complete your profile.") {
-                        console.log("User not found, please complete your profile.");
-                        setUserStatus("notFound"); // Set the status if the user does not exist
-                        setMessage(data.message); // Set the message to prompt the user to complete their profile
+                    console.log("User profile data:", data);
+                    setUser(data.user); // Set the user data
+                    if (!data.user.username || !data.user.birthday || !data.user.school) {
+                        // If user data is incomplete, ask them to complete the profile
+                        setUserStatus("notFound");
+                        setMessage("Please complete your profile.");
+                    } else {
+                        setUserStatus("exists"); // Set status as exists if all data is there
                     }
                 } else {
-                    console.log("Error with the response from the backend.");
+                    console.log("Error fetching user data:", response.statusText);
                     setUserStatus("error"); // Handle error if the API request fails
                 }
             } catch (error) {
-                console.error("Error checking user existence", error);
+                console.error("Error fetching user data", error);
                 setUserStatus("error"); // Handle error if the API request fails
-                setMessage("Error checking user status. Please try again later.");
+                setMessage("Error fetching user data. Please try again later.");
             }
         }
 
-        if (!user) {
-            checkUserExists(); // Call the API to check if the user exists after login
-        }
-    }, [navigate, setUser, user]);
+        fetchUserProfile();  // Fetch the user profile data when the component mounts
+    }, [navigate, setUser]);
 
     const validateUsername = (username) => {
         const regex = /^[A-Za-z0-9]+$/; // Only alphanumeric characters allowed, no spaces, dashes

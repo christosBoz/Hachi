@@ -1,0 +1,61 @@
+# ASP.NET Core build outputs
+bin/
+obj/
+
+# ASP.NET Core user secrets
+secrets/
+
+# .NET Core SDK generated files
+.vscode/
+.idea/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.swp
+*.sln.docstates
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# JetBrains Rider files
+.idea/
+
+# Node.js dependencies
+node_modules/
+
+# Frontend build output
+/dist/
+/build/
+
+# .NET Core tools
+dotnet-*
+
+# Environment files
+.env
+*.env.local
+
+# NPM/Yarn lock files (optional if you are versioning dependencies)
+# yarn.lock
+# package-lock.json
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+
+# JetBrains IDE files
+.idea/
+
+# Visual Studio for Mac config folder
+.vscode/
+.idea/
+
+# Other folders or files specific to your environment
+*.log

@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
@@ -5,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Hachi.Data;
 using DotNetEnv;
 using Serilog;
+using Hachi.Controllers;
+using System.Security.Claims;
+using System.Net.Http;
 
 Env.Load("../../.env");  // This loads the .env file (if you have environment variables in a .env file)
 
@@ -40,6 +44,8 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddHttpClient(); // Add this line to register HttpClient
+
 // Authentication setup (Google & Microsoft OAuth)
 builder.Services.AddAuthentication(options =>
 {
@@ -57,13 +63,31 @@ builder.Services.AddAuthentication(options =>
 })
 .AddGoogle(googleOptions =>
 {
-    googleOptions.ClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID") ?? builder.Configuration["Authentication:Google:ClientId"];
-    googleOptions.ClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET") ?? builder.Configuration["Authentication:Google:ClientSecret"];
+    googleOptions.ClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID");
+    googleOptions.ClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET");
+    googleOptions.Scope.Add("email");  // Add email scope to request email claim
+    googleOptions.SaveTokens = true;  // Save tokens in the cookie
+    googleOptions.Events.OnCreatingTicket = context =>
+    {
+        // Ensure that the email claim is added
+        var email = context.User.GetProperty("email").GetString();  // Extract email correctly from JsonElement
+        context.Identity.AddClaim(new Claim(ClaimTypes.Email, email));
+        return Task.CompletedTask;
+    };
 })
 .AddMicrosoftAccount(microsoftOptions =>
 {
-    microsoftOptions.ClientId = Environment.GetEnvironmentVariable("MICROSOFT_CLIENT_ID") ?? builder.Configuration["Authentication:Microsoft:ClientId"];
-    microsoftOptions.ClientSecret = Environment.GetEnvironmentVariable("MICROSOFT_CLIENT_SECRET") ?? builder.Configuration["Authentication:Microsoft:ClientSecret"];
+    microsoftOptions.ClientId = Environment.GetEnvironmentVariable("MICROSOFT_CLIENT_ID");
+    microsoftOptions.ClientSecret = Environment.GetEnvironmentVariable("MICROSOFT_CLIENT_ID");
+    microsoftOptions.Scope.Add("email");  // Add email scope to request email claim
+    microsoftOptions.SaveTokens = true;  // Save tokens in the cookie
+    microsoftOptions.Events.OnCreatingTicket = context =>
+    {
+        // Ensure that the email claim is added
+        var email = context.User.GetProperty("email").GetString();  // Extract email correctly from JsonElement
+        context.Identity.AddClaim(new Claim(ClaimTypes.Email, email));
+        return Task.CompletedTask;
+    };
 });
 
 // Add authorization services
@@ -71,6 +95,8 @@ builder.Services.AddAuthorization();
 
 // Add controller services
 builder.Services.AddControllers();
+
+builder.Services.AddHttpClient<AuthController>(); // Add this line to register HttpClient for AuthController
 
 var app = builder.Build();
 
