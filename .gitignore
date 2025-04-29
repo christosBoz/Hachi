@@ -1,5 +1,0 @@
-.env
-# Ignore sensitive files
-.env
-bin/
-obj/
