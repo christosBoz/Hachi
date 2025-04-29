@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/LogIn"; // <--- correct casing (match your folder/filename)
 import Test from "./pages/test";   // <--- correct casing (Test, not test)
 import Slideshow from "./components/Slideshow"; // You imported this but not used yet
+import FirstSignUp from "./pages/firstSignUp";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/fsu" element={<FirstSignUp />} />
         </Routes>
       </Router>
     </UserProvider>
