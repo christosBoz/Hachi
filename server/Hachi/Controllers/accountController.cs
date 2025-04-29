@@ -151,7 +151,7 @@ namespace Hachi.Controllers
 
         // Edit profile (POST)
         [HttpPost("edit-profile")]
-        public async Task<IActionResult> EditProfile([FromBody] UserProfileUpdateRequest model)
+        public async Task<IActionResult> EditProfile([FromBody] UserProfileUpdateRequest model) 
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
