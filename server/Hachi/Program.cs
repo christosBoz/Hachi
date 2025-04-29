@@ -51,11 +51,7 @@ builder.Services.AddAuthentication(options =>
     microsoftOptions.ClientId = microsoftClientId!;
     microsoftOptions.ClientSecret = microsoftClientSecret!;
 });
-.AddFacebook(facebookOptions =>
-{
-    facebookOptions.AppId = builder.Configuration["FACEBOOK_APP_ID"]!;
-    facebookOptions.AppSecret = builder.Configuration["FACEBOOK_APP_SECRET"]!;
-});
+
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
