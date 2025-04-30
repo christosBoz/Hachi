@@ -90,62 +90,49 @@ namespace Hachi.Controllers
        [HttpPost("complete-profile")]
         public async Task<IActionResult> CompleteProfile([FromBody] UserProfileUpdateRequest model)
         {
-            if (model == null)
-            {
-                _logger.LogWarning("Profile data is missing.");
-                return BadRequest(new { message = "Profile data is missing." });
-            }
+            var email = Request.Cookies["pre_signup_email"];
+            if (string.IsNullOrEmpty(email))
+                return Unauthorized(new { message = "Session expired or invalid." });
 
+            // Validation...
             if (string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Birthday) || string.IsNullOrEmpty(model.School))
             {
-                _logger.LogWarning("Missing required profile fields.");
-                return BadRequest(new { message = "All fields (Username, Birthday, and School) are required." });
+                return BadRequest(new { message = "All fields are required." });
             }
 
-            // Convert the birthday string to DateTime? (nullable DateTime)
-            DateTime? parsedBirthday = null;
-            if (!string.IsNullOrEmpty(model.Birthday) && DateTime.TryParse(model.Birthday, out DateTime result))
+            var parsedBirthday = DateTime.TryParse(model.Birthday, out var result)
+                ? DateTime.SpecifyKind(result, DateTimeKind.Utc)
+                : (DateTime?)null;
+
+            var newUser = new User
             {
-                parsedBirthday = DateTime.SpecifyKind(result, DateTimeKind.Utc);  // Ensure Birthday is in UTC
-            }
+                UserId = Guid.NewGuid(),
+                Email = email,
+                Username = model.Username,
+                Birthday = parsedBirthday,
+                School = model.School,
+                AccountCreationDate = DateTime.UtcNow,
+                AvatarChoice = model.AvatarChoice ?? "default"
+            };
 
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (userId == null)
-                return Unauthorized();
+            _context.Users.Add(newUser);
+            await _context.SaveChangesAsync();
 
-            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.UserId.ToString() == userId);
-
-            if (existingUser != null)
+            // ✅ Now sign them in
+            var claimsIdentity = new ClaimsIdentity(new[]
             {
-                existingUser.Username = model.Username;
-                existingUser.Birthday = parsedBirthday ?? existingUser.Birthday;
-                existingUser.School = model.School;
-                existingUser.AvatarChoice = model.AvatarChoice ?? "default";  // Set default avatar if not provided
-                
-                _context.Users.Update(existingUser);
-                await _context.SaveChangesAsync();
+                new Claim(ClaimTypes.Email, email),
+                new Claim(ClaimTypes.NameIdentifier, newUser.UserId.ToString())
+            }, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                return Ok(new { message = "Profile updated successfully.", user = existingUser });
-            }
-            else
-            {
-                var newUser = new User
-                {
-                    UserId = Guid.NewGuid(),
-                    Email = User.FindFirst(ClaimTypes.Email)?.Value,
-                    Username = model.Username,
-                    Birthday = parsedBirthday,  // Store UTC birthday
-                    School = model.School,
-                    AccountCreationDate = DateTime.UtcNow,  // Use UTC for account creation date
-                    AvatarChoice = model.AvatarChoice ?? "default"  // Set default avatar if not provided
-                };
+            var principal = new ClaimsPrincipal(claimsIdentity);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                _context.Users.Add(newUser);
-                await _context.SaveChangesAsync();
+            Response.Cookies.Delete("pre_signup_email");
 
-                return Ok(new { message = "Profile created successfully.", user = newUser });
-            }
+            return Ok(new { message = "Profile completed and signed in.", user = newUser });
         }
+
 
 
 
@@ -190,44 +177,44 @@ namespace Hachi.Controllers
 
         // Check if the user exists in the database (after OAuth login)
         [HttpGet("exists")]
-public async Task<IActionResult> CheckUserExists([FromQuery] string email)
-{
-    // Log the start of the method
-    _logger.LogInformation("Starting CheckUserExists method.");
+        public async Task<IActionResult> CheckUserExists([FromQuery] string email)
+        {
+            // Log the start of the method
+            _logger.LogInformation("Starting CheckUserExists method.");
 
-    if (string.IsNullOrEmpty(email))
-    {
-        email = User.FindFirst(ClaimTypes.Email)?.Value; // Try to extract from the user's claims if not passed as query param
-    }
+            if (string.IsNullOrEmpty(email))
+            {
+                email = User.FindFirst(ClaimTypes.Email)?.Value; // Try to extract from the user's claims if not passed as query param
+            }
 
-    // Log email extraction step
-    if (email == null)
-    {
-        _logger.LogWarning("No email claim found for the user.");
-        return Unauthorized();
-    }
-    else
-    {
-        _logger.LogInformation("Email found: {Email}", email); // Log the email found
-    }
+            // Log email extraction step
+            if (email == null)
+            {
+                _logger.LogWarning("No email claim found for the user.");
+                return Unauthorized();
+            }
+            else
+            {
+                _logger.LogInformation("Email found: {Email}", email); // Log the email found
+            }
 
-    // Log the database query step
-    _logger.LogInformation("Querying the database for the user with email: {Email}", email);
+            // Log the database query step
+            _logger.LogInformation("Querying the database for the user with email: {Email}", email);
 
-    var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
-    // Check if the user exists
-    if (user == null)
-    {
-        _logger.LogInformation("No user found with email: {Email}", email);
-        return Ok(new { message = "User does not exist, please complete your profile." });
-    }
+            // Check if the user exists
+            if (user == null)
+            {
+                _logger.LogInformation("No user found with email: {Email}", email);
+                return NotFound(new { message = "User does not exist, please complete your profile." });
+            }
 
-    // If user exists, log the user information
-    _logger.LogInformation("User found: {Username}", user.Username);
+            // If user exists, log the user information
+            _logger.LogInformation("User found: {Username}", user.Username);
 
-    return Ok(new { message = "User exists", user });
-}
+            return Ok(new { message = "User exists", user });
+        }
 
 
         [HttpGet("check-username/{username}")]
