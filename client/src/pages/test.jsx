@@ -149,10 +149,34 @@ function Test() {
         return <div>Loading your profile...</div>;
     }
 
+    const handleSignOut = async () => {
+        try {
+            await fetch("http://localhost:5138/api/auth/logout", {
+                method: "POST",
+                credentials: "include",
+            });
+    
+            setUser(null);         // Clear the user context
+            navigate("/");         // Redirect to home or login
+        } catch (err) {
+            console.error("Logout failed:", err);
+        }
+    };
+    const logoutButtonStyle = {
+        marginTop: "20px",
+        padding: "10px 20px",
+        backgroundColor: "#f44336",
+        color: "white",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+    };
+    
+
     return (
         <div style={{ padding: "20px" }}>
             <h1>Welcome, {user.username || "User"}!</h1>
-
+    
             <h2>Your Info:</h2>
             <ul>
                 <li><strong>UserId:</strong> {user.userId}</li>
@@ -161,8 +185,13 @@ function Test() {
                 <li><strong>Birthday:</strong> {user.birthday}</li>
                 <li><strong>School:</strong> {user.school}</li>
             </ul>
+    
+            <button onClick={handleSignOut} style={logoutButtonStyle}>Sign Out</button>
         </div>
     );
+    
 }
+
+
 
 export default Test;

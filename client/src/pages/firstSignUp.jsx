@@ -1,26 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import BasicDatePicker from "../components/BasicDatePicker";  // For example, if it's in the components folder
+import BasicDatePicker from "../components/BasicDatePicker";
 
 function FirstSignUp() {
   const [step, setStep] = useState(1);
   const [username, setUsername] = useState("");
   const [birthdate, setBirthdate] = useState(null);
   const [school, setSchool] = useState("");
-  const [usernameError, setUsernameError] = useState(""); // State for username validation
-  const [message, setMessage] = useState(""); // State to show general message
+  const [usernameError, setUsernameError] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
+  // ✅ Check for pre_signup_email cookie by pinging the backend
+  useEffect(() => {
+    const checkPreSignup = async () => {
+      try {
+        const res = await fetch("http://localhost:5138/api/auth/check-pre-signup", {
+          credentials: "include",
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          setMessage(`Signing up as: ${data.email}`);
+        } else {
+          navigate("/"); // 🚫 No cookie/session, redirect home
+        }
+      } catch (err) {
+        console.error("Error checking pre-signup:", err);
+        navigate("/");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkPreSignup();
+  }, [navigate]);
+
   const nextStep = async () => {
-    // Validate username before moving to the next step
     if (step === 1) {
       if (!validateUsername(username)) {
-        setUsernameError("Username must be between 4 and 16 characters and cannot contain spaces or dashes.");
+        setUsernameError("Username must be between 4 and 16 characters and contain no spaces or dashes.");
         return;
       }
 
-      // Check if the username is unique
       const response = await fetch(`http://localhost:5138/api/account/check-username/${username}`);
       const data = await response.json();
 
@@ -28,15 +52,14 @@ function FirstSignUp() {
         setUsernameError("This username is already taken. Please choose another.");
         return;
       } else {
-        setUsernameError(""); // Reset the error if username is valid
+        setUsernameError("");
       }
     }
 
-    // Proceed to next step
     setStep(prev => prev + 1);
   };
 
-  const finishSignUp = () => {
+  const finishSignUp = async () => {
     if (!birthdate) {
       alert("Please select a birthdate.");
       return;
@@ -46,17 +69,31 @@ function FirstSignUp() {
       username,
       birthday: birthdate,
       school,
+      avatarChoice: ""
     };
 
-    // Simulate sending data to the server (replace with actual backend call)
-    console.log("Submitting profile data:", profileData);
+    try {
+      const res = await fetch("http://localhost:5138/api/account/complete-profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(profileData),
+      });
 
-    // Redirect to another page after profile submission
-    navigate("/home");
+      if (res.ok) {
+        navigate("/test");
+      } else {
+        const errorData = await res.json();
+        alert(errorData.message || "Signup failed.");
+      }
+    } catch (err) {
+      console.error("Error completing profile:", err);
+      alert("Something went wrong.");
+    }
   };
 
   const validateUsername = (username) => {
-    const regex = /^[A-Za-z0-9]+$/; // Only alphanumeric characters allowed, no spaces, dashes
+    const regex = /^[A-Za-z0-9]+$/;
     return username.length >= 4 && username.length <= 16 && regex.test(username);
   };
 
@@ -108,11 +145,13 @@ function FirstSignUp() {
     }
   };
 
+  if (loading) return <p style={{ color: "white", textAlign: "center" }}>Checking session...</p>;
+
   return (
     <div style={wrapperStyle}>
       <h2>Create your Account</h2>
+      {message && <p>{message}</p>}
       <div style={cardStyle}>
-        {/* Step progress (simplified) */}
         <div style={progressStyle}>
           {[1, 2, 3].map((n) => (
             <div
@@ -128,7 +167,6 @@ function FirstSignUp() {
           ))}
         </div>
         {renderStepContent()}
-        {/* Next Button */}
         {step < 3 && (
           <button onClick={nextStep} style={buttonStyle}>
             NEXT
@@ -139,7 +177,7 @@ function FirstSignUp() {
   );
 }
 
-// -- styles below --
+// -- styles --
 const wrapperStyle = {
   display: "flex",
   flexDirection: "column",

@@ -1,5 +1,7 @@
 import './Login.css';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 import monkeyorange from "../assets/monkeyorange.png";
 
 function BackgroundAnimation() {
@@ -29,13 +31,12 @@ const iconStyle = {
     marginRight: "10px"
 };
 
-// 👉 New: Functions to handle clicking buttons
 function handleGoogleLogin() {
-    window.location.href = "http://localhost:5138/api/auth/login/google"; // updated
+    window.location.href = "http://localhost:5138/api/auth/login/google";
 }
 
 function handleMicrosoftLogin() {
-    window.location.href = "http://localhost:5138/api/auth/login/microsoft"; // updated
+    window.location.href = "http://localhost:5138/api/auth/login/microsoft";
 }
 
 function MethodPicker() {
@@ -57,13 +58,11 @@ function MethodPicker() {
             <h1 style={{ color: "#b300ff", marginBottom: "10px" }}>Hachi</h1>
             <p style={{ color: "#b300ff", marginBottom: "30px" }}>Welcome<br />Sign in with the following methods</p>
 
-            {/* Google */}
             <div style={buttonStyle} onClick={handleGoogleLogin}>
                 <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google" style={iconStyle} />
                 Continue with Google
             </div>
 
-            {/* Microsoft */}
             <div style={buttonStyle} onClick={handleMicrosoftLogin}>
                 <img src="https://img.icons8.com/color/24/000000/microsoft.png" alt="Microsoft" style={iconStyle} />
                 Continue with Microsoft
@@ -73,6 +72,30 @@ function MethodPicker() {
 }
 
 function Login() {
+    const { user, setUser } = useUser();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Check for valid session
+        const checkSession = async () => {
+            try {
+                const res = await fetch("http://localhost:5138/api/auth/validate", {
+                    credentials: "include",
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    setUser(data.user);
+                    navigate("/test"); // redirect to protected page
+                }
+            } catch (err) {
+                console.error("Session check failed", err);
+            }
+        };
+
+        checkSession();
+    }, [setUser, navigate]);
+
     return (
         <div style={{ backgroundColor: "#3C79FF", minHeight: "100vh", overflow: "hidden" }}>
             <BackgroundAnimation />
