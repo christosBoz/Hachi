@@ -96,7 +96,7 @@ namespace Hachi.Controllers
                 return Unauthorized(new { message = "Session expired or invalid." });
 
             // Validation...
-            if (string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Birthday) || string.IsNullOrEmpty(model.School))
+            if (string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Birthday) || model.SchoolId == 0)
             {
                 return BadRequest(new { message = "All fields are required." });
             }
@@ -111,10 +111,10 @@ namespace Hachi.Controllers
                 Email = email,
                 Username = model.Username,
                 Birthday = parsedBirthday,
-                School = model.School,
+                SchoolId = model.SchoolId,
                 AccountCreationDate = DateTime.UtcNow,
                 AvatarChoice = model.AvatarChoice ?? "default",
-                Teacher = model.Teacher,
+                Teacher = model.Teacher ?? false,
             };
 
             _context.Users.Add(newUser);
@@ -166,7 +166,7 @@ namespace Hachi.Controllers
             // Use the parsed birthday or keep the existing one if invalid
             user.Birthday = parsedBirthday ?? user.Birthday;
 
-            user.School = model.School ?? user.School;
+            // user.School = model.School ?? user.School;
             user.AvatarChoice = model.AvatarChoice ?? user.AvatarChoice;
 
             // Save changes to the database

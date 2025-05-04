@@ -27,7 +27,7 @@ namespace Hachi.Controllers
                 .Where(s => EF.Functions.ILike(s.Name, $"%{query}%"))
                 .OrderBy(s => s.Name)
                 .Take(10)
-                .Select(s => new { s.Name })
+                .Select(s => new { s.Name, s.City, s.State, s.Id })
                 .ToListAsync();
 
             return Ok(results);

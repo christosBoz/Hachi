@@ -1,7 +1,7 @@
 # ASP.NET Core build outputs
 bin/
 obj/
-
+hachi/server/Hachi/Logs
 # ASP.NET Core user secrets
 secrets/
 
@@ -59,3 +59,5 @@ ehthumbs.db
 
 # Other folders or files specific to your environment
 *.log
+
+

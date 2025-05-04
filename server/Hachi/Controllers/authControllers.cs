@@ -164,7 +164,7 @@ namespace Hachi.Controllers
 
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
-            if (user == null || string.IsNullOrEmpty(user.Username) || user.Birthday == null || string.IsNullOrEmpty(user.School))
+            if (user == null || string.IsNullOrEmpty(user.Username) || user.Birthday == null || user.SchoolId == 0)
             {
                 // ❌ Not a valid user → log out
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

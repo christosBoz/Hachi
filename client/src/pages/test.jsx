@@ -27,7 +27,7 @@ function Test() {
                     const data = await response.json();
                     console.log("User profile data:", data);
                     setUser(data.user); // Set the user data
-                    if (!data.user.username || !data.user.birthday || !data.user.school) {
+                    if (!data.user.username || !data.user.birthday) {
                         // If user data is incomplete, ask them to complete the profile
                         setUserStatus("notFound");
                         setMessage("Please complete your profile.");

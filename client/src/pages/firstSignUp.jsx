@@ -16,6 +16,7 @@ function FirstSignUp() {
   const [showTeacherOptions, setShowTeacherOptions] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [teacher, setTeacher] = useState(false);
+  const [schoolId, setSchoolId] = useState(null);
 
   
 
@@ -64,8 +65,12 @@ function FirstSignUp() {
       }
     }
     if (step === 2) { //2099-04-29 17:00:00.000 -0700
+      
+      
+      
       const today = new Date();
       const userBDate = new Date(birthdate)
+      console.log(userBDate)
       const age = today.getFullYear() - userBDate.getFullYear();
       if(!validateBDate()){
         return;
@@ -89,7 +94,7 @@ function FirstSignUp() {
     const profileData = {
       username,
       birthday: birthdate,
-      school,
+      schoolId,
       avatarChoice: "",
       teacher,
     };
@@ -153,8 +158,9 @@ function FirstSignUp() {
         console.error("Error fetching schools:", err);
       }
     }, 300); // debounce input
-  
+    console.log(schoolResults)
     return () => clearTimeout(timeoutId);
+    
   }, [school]);
 
   const renderStepContent = () => {
@@ -232,21 +238,25 @@ function FirstSignUp() {
               zIndex: 10
             }}>
               {schoolResults.map((s, idx) => (
-                <li
-                  key={idx}
-                  onMouseDown={() => {
-                    setSchool(s.name); // pick the school
-                    setShowDropdown(false);
-                  }}
-                  style={{
-                    padding: "10px",
-                    borderBottom: "1px solid #eee",
-                    cursor: "pointer"
-                  }}
-                >
-                  {s.name}
-                </li>
-              ))}
+              <li
+                key={idx}
+                onMouseDown={() => {
+                  setSchool(`${s.name}, ${s.city}, ${s.state}`); // include city and state
+                  setSchoolId(s.id)
+                  setShowDropdown(false);
+                }}
+                style={{
+                  padding: "10px",
+                  borderBottom: "1px solid #eee",
+                  cursor: "pointer"
+                }}
+              >
+                <strong>{s.name}</strong><br />
+                <span style={{ fontSize: "0.85em", color: "#555" }}>
+                  {s.city}, {s.state}
+                </span>
+              </li>
+            ))}
             </ul>
           )}
             <div>
