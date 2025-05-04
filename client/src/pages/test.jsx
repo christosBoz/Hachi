@@ -15,6 +15,7 @@ function Test() {
     const [birthday, setBirthday] = useState("");
     const [school, setSchool] = useState("");
     const [teacher, setTeacher] = useState(false);
+    const [schoolInfo, setSchoolInfo] = useState(null);
 
     useEffect(() => {
         async function fetchUserProfile() {
@@ -27,6 +28,18 @@ function Test() {
                     const data = await response.json();
                     console.log("User profile data:", data);
                     setUser(data.user); // Set the user data
+                    if (data.user.schoolId) {
+                        try {
+                          const schoolRes = await fetch(`http://localhost:5138/api/schools/${data.user.schoolId}`);
+                          if (schoolRes.ok) {
+                            const schoolData = await schoolRes.json();
+                            setSchoolInfo(schoolData);  // Should be { id, name, city, state }
+                          }
+                        } catch (error) {
+                          console.error("Error fetching school info:", error);
+                        }
+                      }
+
                     if (!data.user.username || !data.user.birthday) {
                         // If user data is incomplete, ask them to complete the profile
                         setUserStatus("notFound");
@@ -185,7 +198,11 @@ function Test() {
                 <li><strong>Email:</strong> {user.email}</li>
                 <li><strong>Username:</strong> {user.username}</li>
                 <li><strong>Birthday:</strong> {user.birthday}</li>
-                <li><strong>School:</strong> {user.school}</li>
+                <li><strong>School:</strong> 
+                {schoolInfo 
+                    ? `${schoolInfo.name}, ${schoolInfo.city}, ${schoolInfo.state}` 
+                    : "N/A"}
+                </li>
                 <li><strong>Teacher:</strong> {user.teacher ? "Yes" : "No"}</li>
             </ul>
     
