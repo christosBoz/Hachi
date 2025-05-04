@@ -6,6 +6,7 @@ import Test from "./pages/test";
 import FirstSignUp from "./pages/firstSignUp";
 import ProtectedRoute from "./ProtectedRoute"; // ← import it
 import Profile from "./pages/Profile";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   return (
@@ -28,6 +29,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />,
+          <Route
+            path="/dash"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
               </ProtectedRoute>
             }
           />,
