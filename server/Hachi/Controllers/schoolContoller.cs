@@ -23,6 +23,8 @@ namespace Hachi.Controllers
             if (string.IsNullOrWhiteSpace(query))
                 return BadRequest("Missing search query.");
 
+            
+
             var results = await _context.Schools
                 .Where(s => EF.Functions.ILike(s.Name, $"%{query}%"))
                 .OrderBy(s => s.Name)
