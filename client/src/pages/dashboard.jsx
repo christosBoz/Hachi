@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import HachiLogoLong from "../assets/HachiLogoLong.png";
 import SearchBar from '../components/Searchbar';
 import homeIcon from '../assets/sidebarIcons/homeIcon.png'
+import folderIcon from '../assets/sidebarIcons/folderIcon.png'
 
 export default function Dashboard() {
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -60,16 +61,55 @@ function StudentSidebar() {
       <Sidebar>
         {(isOpen) => (
           <div>
+            <Category label="" isOpen={isOpen} />
             <SidebarItem label="Dashboard" icon={homeIcon} isOpen={isOpen} />
-            <SidebarItem label="Classes" icon={homeIcon} isOpen={isOpen} />
-            <SidebarItem label="Settings" icon={homeIcon} isOpen={isOpen} />
+            <SidebarItem label="Materials" icon={folderIcon} isOpen={isOpen} />
+            <Separator isOpen={isOpen} />
+  
+            <Category label="User" isOpen={isOpen} />
             <SidebarItem label="Messages" icon={homeIcon} isOpen={isOpen} />
             <SidebarItem label="Profile" icon={homeIcon} isOpen={isOpen} />
+            <Separator isOpen={isOpen} />
+  
+            <Category label="Settings" isOpen={isOpen} />
+            <SidebarItem label="Settings" icon={homeIcon} isOpen={isOpen} />
           </div>
         )}
       </Sidebar>
     );
   }
+  function Category({ label, isOpen }) {
+    if (!isOpen) return null;
+    return (
+      <div
+        style={{
+          fontSize: "1.1vh",
+          color: "black",
+          margin: "10px 10px 4px 10px",
+          textTransform: "uppercase",
+          letterSpacing: "0.05em",
+        }}
+      >
+        {label}
+      </div>
+    );
+  }
+  function Separator({ isOpen }) {
+    return (
+      <hr
+        style={{
+          border: "none",
+          borderTop: "1px solid #999",
+          margin: "8px auto",
+          width: isOpen ? "80%" : "60%",
+          transition: "width 0.3s ease"
+        }}
+      />
+    );
+  }
+  
+  
+  
   
   function SidebarItem({ label, icon, isOpen }) {
     return (
