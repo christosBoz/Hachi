@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Hachi.Data;
-using Microsoft.Extensions.Logging;  // This namespace is required for logging
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.ModelBinding;  // This namespace is required for logging
 
 namespace Hachi.Controllers
 {
@@ -112,7 +113,8 @@ namespace Hachi.Controllers
                 Birthday = parsedBirthday,
                 School = model.School,
                 AccountCreationDate = DateTime.UtcNow,
-                AvatarChoice = model.AvatarChoice ?? "default"
+                AvatarChoice = model.AvatarChoice ?? "default",
+                Teacher = model.Teacher,
             };
 
             _context.Users.Add(newUser);

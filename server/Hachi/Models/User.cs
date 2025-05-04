@@ -7,5 +7,6 @@ public class User
     public string School { get; set; }           // School (nullable)
     public DateTime AccountCreationDate { get; set; } // Account creation date
     public string AvatarChoice { get; set; }     // Avatar choice (e.g., customizable options)
+    public bool Teacher {get; set;}
 }
 

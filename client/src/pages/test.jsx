@@ -14,6 +14,7 @@ function Test() {
     const [username, setUsername] = useState("");
     const [birthday, setBirthday] = useState("");
     const [school, setSchool] = useState("");
+    const [teacher, setTeacher] = useState(false);
 
     useEffect(() => {
         async function fetchUserProfile() {
@@ -78,7 +79,8 @@ function Test() {
             username, 
             birthday, 
             school, 
-            avatarChoice: "default"  // Provide a default avatar choice or null
+            avatarChoice: "default",  // Provide a default avatar choice or null,
+            teacher
         };
     
         const profileResponse = await fetch("http://localhost:5138/api/account/complete-profile", {
@@ -184,6 +186,7 @@ function Test() {
                 <li><strong>Username:</strong> {user.username}</li>
                 <li><strong>Birthday:</strong> {user.birthday}</li>
                 <li><strong>School:</strong> {user.school}</li>
+                <li><strong>Teacher:</strong> {user.teacher ? "Yes" : "No"}</li>
             </ul>
     
             <button onClick={handleSignOut} style={logoutButtonStyle}>Sign Out</button>

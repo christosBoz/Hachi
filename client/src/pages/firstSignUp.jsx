@@ -8,8 +8,16 @@ function FirstSignUp() {
   const [birthdate, setBirthdate] = useState(null);
   const [school, setSchool] = useState("");
   const [usernameError, setUsernameError] = useState("");
+  const [bDateError, setBDateError] = useState("")
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
+  const [schoolResults, setSchoolResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showTeacherOptions, setShowTeacherOptions] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [teacher, setTeacher] = useState(false);
+
+  
 
   const navigate = useNavigate();
 
@@ -55,7 +63,20 @@ function FirstSignUp() {
         setUsernameError("");
       }
     }
-
+    if (step === 2) { //2099-04-29 17:00:00.000 -0700
+      const today = new Date();
+      const userBDate = new Date(birthdate)
+      const age = today.getFullYear() - userBDate.getFullYear();
+      if(!validateBDate()){
+        return;
+      }
+      if (age >= 20) {
+        setShowTeacherOptions(true)
+        if (!showTeacherOptions) return;
+      } 
+     
+    }
+    setBDateError("") 
     setStep(prev => prev + 1);
   };
 
@@ -69,7 +90,8 @@ function FirstSignUp() {
       username,
       birthday: birthdate,
       school,
-      avatarChoice: ""
+      avatarChoice: "",
+      teacher,
     };
 
     try {
@@ -96,6 +118,44 @@ function FirstSignUp() {
     const regex = /^[A-Za-z0-9]+$/;
     return username.length >= 4 && username.length <= 16 && regex.test(username);
   };
+  const validateBDate = () => {
+    if (!birthdate) {
+      setBDateError("Please enter a birthdate.");
+      return false;
+    }
+  
+    const today = new Date();
+    const userBDate = new Date(birthdate);
+  
+    if (userBDate > today) {
+      setBDateError("Please enter a valid birthdate.");
+      return false;
+    }
+  
+    setBDateError("");
+    return true;
+  };
+
+  useEffect(() => {
+    console.log("this is working seaching for schools")
+    if (school.length < 2) {
+      setSchoolResults([]);
+      return;
+    }
+
+    const timeoutId = setTimeout(async () => {
+      try {
+        const res = await fetch(`http://localhost:5138/api/schools/search?query=${encodeURIComponent(school)}`);
+        const data = await res.json();
+        setSchoolResults(data);
+        setShowDropdown(true);
+      } catch (err) {
+        console.error("Error fetching schools:", err);
+      }
+    }, 300); // debounce input
+  
+    return () => clearTimeout(timeoutId);
+  }, [school]);
 
   const renderStepContent = () => {
     switch (step) {
@@ -121,7 +181,26 @@ function FirstSignUp() {
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
               <BasicDatePicker birthdate={birthdate} setBirthdate={setBirthdate} />
             </div>
+            {bDateError && <div style={errorStyle}>{bDateError}</div>}
+            {showTeacherOptions  && (
+            <div>
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={(e) => {
+                  const checked = e.target.checked;
+                  setIsChecked(checked)
+                  setTeacher(checked)
+          
+                }}
+              />
+              Are you a teacher
+            </label>
+          </div>
+          )}
           </>
+           
         );
       case 3:
         return (
@@ -129,12 +208,47 @@ function FirstSignUp() {
             <h3>Enter School</h3>
             <label htmlFor="school">School name</label>
             <input
-              type="text"
-              id="school"
-              value={school}
-              onChange={(e) => setSchool(e.target.value)}
-              style={inputStyle}
-            />
+            type="text"
+            id="school"
+            value={school}
+            onChange={(e) => setSchool(e.target.value)}
+            onFocus={() => setShowDropdown(true)}
+            onBlur={() => setTimeout(() => setShowDropdown(false), 150)}
+            style={inputStyle}
+          />
+
+          {showDropdown && schoolResults.length > 0 && (
+            <ul style={{
+              listStyle: "none",
+              padding: "0",
+              margin: "0",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              maxHeight: "150px",
+              overflowY: "auto",
+              background: "#fff",
+              // position: "absolute",
+              width: "100%",
+              zIndex: 10
+            }}>
+              {schoolResults.map((s, idx) => (
+                <li
+                  key={idx}
+                  onMouseDown={() => {
+                    setSchool(s.name); // pick the school
+                    setShowDropdown(false);
+                  }}
+                  style={{
+                    padding: "10px",
+                    borderBottom: "1px solid #eee",
+                    cursor: "pointer"
+                  }}
+                >
+                  {s.name}
+                </li>
+              ))}
+            </ul>
+          )}
             <div>
               <button onClick={finishSignUp} style={buttonStyle}>Finish</button>
             </div>
