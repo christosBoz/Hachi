@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hachi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93d18603dce1964bb13f7ca66f03b028c3019849")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f50c848623f84ac11c7f6a41406a97d782ac152e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hachi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hachi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

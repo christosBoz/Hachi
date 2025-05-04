@@ -23,6 +23,8 @@ namespace Hachi.Controllers
             if (string.IsNullOrWhiteSpace(query))
                 return BadRequest("Missing search query.");
 
+            
+
             var results = await _context.Schools
                 .Where(s => EF.Functions.ILike(s.Name, $"%{query}%"))
                 .OrderBy(s => s.Name)
@@ -31,6 +33,26 @@ namespace Hachi.Controllers
                 .ToListAsync();
 
             return Ok(results);
+        }
+
+       [HttpGet("{id}")]
+        public async Task<IActionResult> GetSchoolById(int id)
+        {
+            var school = await _context.Schools
+                .Where(s => s.Id == id)
+                .Select(s => new {
+                    s.Id,
+                    s.Name,
+                    s.City,
+                    s.State,
+                    s.Type
+                })
+                .FirstOrDefaultAsync();
+
+            if (school == null)
+                return NotFound(new { message = "School not found." });
+
+            return Ok(school);
         }
     }
 }
