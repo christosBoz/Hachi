@@ -7,7 +7,8 @@ import HachiLogoLong from "../assets/HachiLogoLong.png";
 import SearchBar from '../components/Searchbar';
 import homeIcon from '../assets/sidebarIcons/homeIcon.png'
 import folderIcon from '../assets/sidebarIcons/folderIcon.png'
-
+import notification from '../assets/sidebarIcons/notification.png'
+import plusIcon from '../assets/sidebarIcons/plusIcon.png'
 export default function Dashboard() {
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
 
@@ -44,12 +45,14 @@ function TopBanner() {
       </span>
       <div
         style={{
-          marginLeft: "auto",
-          display: "flex",
-          alignItems: "center",
-          gap: "1vw",
+            height: "100%",
+            marginLeft: "auto",
+            display: "flex",
+            alignItems: "center",
+            gap: "1vw",
         }}
       >
+        <img src={notification} alt="Hachi Logo" style={{ height: "55%" }} />
         <span style={{ fontSize: "1.4vh", color: "#6A39FE" }}>For Teachers</span>
       </div>
     </Banner>
@@ -65,10 +68,13 @@ function StudentSidebar() {
             <SidebarItem label="Dashboard" icon={homeIcon} isOpen={isOpen} />
             <SidebarItem label="Materials" icon={folderIcon} isOpen={isOpen} />
             <Separator isOpen={isOpen} />
-  
-            <Category label="User" isOpen={isOpen} />
-            <SidebarItem label="Messages" icon={homeIcon} isOpen={isOpen} />
-            <SidebarItem label="Profile" icon={homeIcon} isOpen={isOpen} />
+
+            <Category label="Your Folders" isOpen={isOpen} />
+            <SidebarItem label="Create folder" icon={plusIcon} isOpen={isOpen} />
+            <Separator isOpen={isOpen} />
+
+            <Category label="Your Classes" isOpen={isOpen} />
+            <SidebarItem label="Join class" icon={plusIcon} isOpen={isOpen} />
             <Separator isOpen={isOpen} />
   
             <Category label="Settings" isOpen={isOpen} />
@@ -86,7 +92,6 @@ function StudentSidebar() {
           fontSize: "1.1vh",
           color: "black",
           margin: "10px 10px 4px 10px",
-          textTransform: "uppercase",
           letterSpacing: "0.05em",
         }}
       >
