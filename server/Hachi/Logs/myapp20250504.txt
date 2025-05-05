@@ -3679,3 +3679,4 @@ LIMIT 1
 2025-05-04 16:08:10.376 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 77.3518ms
 2025-05-04 16:08:10.376 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
 2025-05-04 16:08:10.377 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 83.2056ms
+2025-05-04 20:44:33.960 -07:00 [INF] Application is shutting down...
