@@ -2864,3 +2864,818 @@ LIMIT 1
 2025-05-04 14:45:58.973 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.GetSchoolById (Hachi) in 99.8282ms
 2025-05-04 14:45:58.973 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
 2025-05-04 14:45:58.974 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/103925 - 200 null application/json; charset=utf-8 104.5107ms
+2025-05-04 15:06:16.896 -07:00 [INF] Application is shutting down...
+2025-05-04 15:06:27.202 -07:00 [INF] User profile is available. Using 'C:\Users\chris\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-04 15:06:27.266 -07:00 [INF] Now listening on: http://localhost:5138
+2025-05-04 15:06:27.268 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-04 15:06:27.269 -07:00 [INF] Hosting environment: Development
+2025-05-04 15:06:27.269 -07:00 [INF] Content root path: C:\Users\chris\Desktop\Hachi\hachi\server\Hachi
+2025-05-04 15:08:31.568 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:08:31.582 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:31.598 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:08:31.607 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:08:33.011 -07:00 [INF] Executed DbCommand (105ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:08:33.073 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:08:33.108 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:08:33.108 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 1498.2372ms
+2025-05-04 15:08:33.111 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:33.113 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:08:33.115 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:08:33.116 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:08:33.119 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 1551.4685ms
+2025-05-04 15:08:33.208 -07:00 [INF] Executed DbCommand (74ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:08:33.210 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:08:33.212 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 94.3606ms
+2025-05-04 15:08:33.212 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:08:33.213 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 105.9277ms
+2025-05-04 15:08:40.460 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:08:40.462 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:40.466 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:08:40.467 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:08:40.468 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 7.3784ms
+2025-05-04 15:08:40.470 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:08:40.471 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:40.472 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:08:40.473 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:08:40.474 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 3.7551ms
+2025-05-04 15:08:41.872 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:08:41.873 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:41.874 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:08:41.874 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:08:41.875 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 3.0449ms
+2025-05-04 15:08:41.877 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:08:41.878 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:41.878 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:08:41.879 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:08:41.879 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 2.4736ms
+2025-05-04 15:08:42.826 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/login/google - null null
+2025-05-04 15:08:42.827 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.GoogleLogin (Hachi)'
+2025-05-04 15:08:42.829 -07:00 [INF] Route matched with {action = "GoogleLogin", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GoogleLogin() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:08:42.840 -07:00 [INF] Executing ChallengeResult with authentication schemes (["Google"]).
+2025-05-04 15:08:42.846 -07:00 [INF] AuthenticationScheme: Google was challenged.
+2025-05-04 15:08:42.846 -07:00 [INF] Executed action Hachi.Controllers.AuthController.GoogleLogin (Hachi) in 16.3843ms
+2025-05-04 15:08:42.847 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.GoogleLogin (Hachi)'
+2025-05-04 15:08:42.847 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/login/google - 302 0 null 21.7203ms
+2025-05-04 15:08:47.090 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/signin-google?state=CfDJ8Jzu86c_1-NBuw98oqYeVyGTDuckKYLSe8Cpz19EHZG17Bzty-uJsSOT4Ks3BYTauHdHQ73Utdzx7NiK62vtg8DmC7kVaJsdwfQQKQxHcsR-D02hU_swzbsvf7LfpG1r7rpJQrToa80laFq1YOAZnNw2CGk3j8CPlCWMLrclBY3le7tnbuuJ3d0E2_8KIByc5nptH3lsiH5fUnhfTigqAS5CuBUE3zUTy0YEqxRgnBxOB3JwORAeuELLmdOpK_3w1NieC9IkQVmTsYGveZ_Aso5zUm76f-eHhPehEbkYW9bZVn2wEad4eR5m5AWGaLaNpA&code=4%2F0Ab_5qllUSmgNTNtRVunYwPZPi8DF8O9OohMH_Q98ofKLyasSnwss3EBfnO8iakS4hZzqjA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent - null null
+2025-05-04 15:08:47.653 -07:00 [INF] AuthenticationScheme: Cookies signed in.
+2025-05-04 15:08:47.654 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/signin-google?state=CfDJ8Jzu86c_1-NBuw98oqYeVyGTDuckKYLSe8Cpz19EHZG17Bzty-uJsSOT4Ks3BYTauHdHQ73Utdzx7NiK62vtg8DmC7kVaJsdwfQQKQxHcsR-D02hU_swzbsvf7LfpG1r7rpJQrToa80laFq1YOAZnNw2CGk3j8CPlCWMLrclBY3le7tnbuuJ3d0E2_8KIByc5nptH3lsiH5fUnhfTigqAS5CuBUE3zUTy0YEqxRgnBxOB3JwORAeuELLmdOpK_3w1NieC9IkQVmTsYGveZ_Aso5zUm76f-eHhPehEbkYW9bZVn2wEad4eR5m5AWGaLaNpA&code=4%2F0Ab_5qllUSmgNTNtRVunYwPZPi8DF8O9OohMH_Q98ofKLyasSnwss3EBfnO8iakS4hZzqjA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent - 302 0 null 564.3996ms
+2025-05-04 15:08:47.657 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/Auth/GoogleResponse - null null
+2025-05-04 15:08:47.658 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.GoogleResponse (Hachi)'
+2025-05-04 15:08:47.661 -07:00 [INF] Route matched with {action = "GoogleResponse", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GoogleResponse() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:08:47.663 -07:00 [INF] Starting GoogleResponse
+2025-05-04 15:08:47.666 -07:00 [INF] Start processing HTTP request GET http://localhost:5138/api/account/exists?*
+2025-05-04 15:08:47.667 -07:00 [INF] Sending HTTP request GET http://localhost:5138/api/account/exists?*
+2025-05-04 15:08:47.669 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/exists?email=chrisbozionelos17@gmail.com - null null
+2025-05-04 15:08:47.670 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.CheckUserExists (Hachi)'
+2025-05-04 15:08:47.682 -07:00 [INF] Route matched with {action = "CheckUserExists", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CheckUserExists(System.String) on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 15:08:47.688 -07:00 [INF] Starting CheckUserExists method.
+2025-05-04 15:08:47.689 -07:00 [INF] Email found: chrisbozionelos17@gmail.com
+2025-05-04 15:08:47.689 -07:00 [INF] Querying the database for the user with email: chrisbozionelos17@gmail.com
+2025-05-04 15:08:47.796 -07:00 [INF] Executed DbCommand (75ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:08:47.798 -07:00 [INF] No user found with email: chrisbozionelos17@gmail.com
+2025-05-04 15:08:47.799 -07:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:08:47.801 -07:00 [INF] Executed action Hachi.Controllers.AccountController.CheckUserExists (Hachi) in 118.4491ms
+2025-05-04 15:08:47.802 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.CheckUserExists (Hachi)'
+2025-05-04 15:08:47.802 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/exists?email=chrisbozionelos17@gmail.com - 404 null application/json; charset=utf-8 133.587ms
+2025-05-04 15:08:47.806 -07:00 [INF] Received HTTP response headers after 133.9279ms - 404
+2025-05-04 15:08:47.807 -07:00 [INF] End processing HTTP request after 142.8507ms - 404
+2025-05-04 15:08:47.808 -07:00 [INF] Executing RedirectResult, redirecting to http://localhost:3000/fsu.
+2025-05-04 15:08:47.808 -07:00 [INF] Executed action Hachi.Controllers.AuthController.GoogleResponse (Hachi) in 146.6071ms
+2025-05-04 15:08:47.809 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.GoogleResponse (Hachi)'
+2025-05-04 15:08:47.810 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/Auth/GoogleResponse - 302 0 null 152.7988ms
+2025-05-04 15:08:47.972 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/check-pre-signup - null null
+2025-05-04 15:08:47.973 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:47.973 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.CheckPreSignup (Hachi)'
+2025-05-04 15:08:47.975 -07:00 [INF] Route matched with {action = "CheckPreSignup", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CheckPreSignup() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:08:47.975 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:08:47.976 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:08:47.977 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:47.978 -07:00 [INF] Executed action Hachi.Controllers.AuthController.CheckPreSignup (Hachi) in 2.5663ms
+2025-05-04 15:08:47.978 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:08:47.979 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.CheckPreSignup (Hachi)'
+2025-05-04 15:08:47.979 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/check-pre-signup - null null
+2025-05-04 15:08:47.979 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:08:47.980 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/check-pre-signup - 200 null application/json; charset=utf-8 8.4121ms
+2025-05-04 15:08:47.981 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:47.984 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.CheckPreSignup (Hachi)'
+2025-05-04 15:08:47.984 -07:00 [INF] Route matched with {action = "CheckPreSignup", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CheckPreSignup() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:08:47.985 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:08:47.986 -07:00 [INF] Executed action Hachi.Controllers.AuthController.CheckPreSignup (Hachi) in 0.8858ms
+2025-05-04 15:08:47.987 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.CheckPreSignup (Hachi)'
+2025-05-04 15:08:47.987 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/check-pre-signup - 200 null application/json; charset=utf-8 8.0961ms
+2025-05-04 15:08:48.056 -07:00 [INF] Executed DbCommand (74ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:08:48.059 -07:00 [INF] AuthenticationScheme: Cookies signed out.
+2025-05-04 15:08:48.059 -07:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:08:48.060 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 78.1967ms
+2025-05-04 15:08:48.061 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:08:48.061 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:08:48.062 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:48.062 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 null application/json; charset=utf-8 86.6854ms
+2025-05-04 15:08:48.063 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:08:48.064 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:08:48.143 -07:00 [INF] Executed DbCommand (77ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:08:48.144 -07:00 [INF] AuthenticationScheme: Cookies signed out.
+2025-05-04 15:08:48.145 -07:00 [INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:08:48.146 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 80.7323ms
+2025-05-04 15:08:48.146 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:08:48.147 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 null application/json; charset=utf-8 86.1242ms
+2025-05-04 15:08:51.165 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/check-username/Bak2 - null null
+2025-05-04 15:08:51.167 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:08:51.167 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.CheckUsername (Hachi)'
+2025-05-04 15:08:51.170 -07:00 [INF] Route matched with {action = "CheckUsername", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CheckUsername(System.String) on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 15:08:51.254 -07:00 [INF] Executed DbCommand (77ms) [Parameters=[@__username_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Username" = @__username_0
+LIMIT 1
+2025-05-04 15:08:51.255 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:08:51.256 -07:00 [INF] Executed action Hachi.Controllers.AccountController.CheckUsername (Hachi) in 85.3018ms
+2025-05-04 15:08:51.257 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.CheckUsername (Hachi)'
+2025-05-04 15:08:51.257 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/check-username/Bak2 - 200 null application/json; charset=utf-8 92.271ms
+2025-05-04 15:09:00.172 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacmr - null null
+2025-05-04 15:09:00.174 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:00.174 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:00.176 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:00.195 -07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-05-04 15:09:00.504 -07:00 [INF] Executed DbCommand (304ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:00.506 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:00.507 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 329.9525ms
+2025-05-04 15:09:00.507 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:00.508 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacmr - 200 null application/json; charset=utf-8 335.5346ms
+2025-05-04 15:09:02.005 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacra - null null
+2025-05-04 15:09:02.007 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:02.007 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:02.008 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:02.106 -07:00 [INF] Executed DbCommand (97ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:02.116 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:02.117 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 108.649ms
+2025-05-04 15:09:02.118 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:02.118 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacra - 200 null application/json; charset=utf-8 112.6658ms
+2025-05-04 15:09:03.554 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento - null null
+2025-05-04 15:09:03.555 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:03.556 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:03.556 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:03.655 -07:00 [INF] Executed DbCommand (98ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:03.657 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:03.658 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 100.957ms
+2025-05-04 15:09:03.658 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:03.659 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento - 200 null application/json; charset=utf-8 105.0083ms
+2025-05-04 15:09:05.081 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento%20 - null null
+2025-05-04 15:09:05.083 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:05.083 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:05.084 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:05.404 -07:00 [INF] Executed DbCommand (319ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:05.406 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:05.407 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 322.3656ms
+2025-05-04 15:09:05.407 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:05.408 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento%20 - 200 null application/json; charset=utf-8 326.6192ms
+2025-05-04 15:09:05.564 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento%20S - null null
+2025-05-04 15:09:05.565 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:05.565 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:05.566 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:05.898 -07:00 [INF] Executed DbCommand (330ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:05.899 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:05.900 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 333.5148ms
+2025-05-04 15:09:05.901 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:05.901 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento%20S - 200 null application/json; charset=utf-8 337.6385ms
+2025-05-04 15:09:07.390 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento%20State - null null
+2025-05-04 15:09:07.391 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:07.392 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:07.392 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:07.747 -07:00 [INF] Executed DbCommand (353ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:07.749 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:07.749 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 356.321ms
+2025-05-04 15:09:07.750 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:07.750 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento%20State - 200 null application/json; charset=utf-8 360.299ms
+2025-05-04 15:09:10.201 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sac - null null
+2025-05-04 15:09:10.202 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:10.203 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:10.203 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:10.291 -07:00 [INF] Executed DbCommand (85ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:10.292 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:10.293 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 88.8202ms
+2025-05-04 15:09:10.294 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:10.294 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sac - 200 null application/json; charset=utf-8 93.0913ms
+2025-05-04 15:09:10.749 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sac%20S - null null
+2025-05-04 15:09:10.751 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:10.751 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:10.752 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:11.051 -07:00 [INF] Executed DbCommand (298ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:11.053 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:11.053 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 300.8314ms
+2025-05-04 15:09:11.054 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:11.054 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sac%20S - 200 null application/json; charset=utf-8 304.9956ms
+2025-05-04 15:09:11.312 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sac%20Stat - null null
+2025-05-04 15:09:11.313 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:11.313 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:11.314 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:11.621 -07:00 [INF] Executed DbCommand (305ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:11.622 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:11.623 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 308.3432ms
+2025-05-04 15:09:11.624 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:11.624 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sac%20Stat - 200 null application/json; charset=utf-8 312.3002ms
+2025-05-04 15:09:12.789 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sac%20 - null null
+2025-05-04 15:09:12.790 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:12.790 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:12.791 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:13.133 -07:00 [INF] Executed DbCommand (341ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:13.135 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:13.135 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 343.8991ms
+2025-05-04 15:09:13.136 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:13.137 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sac%20 - 200 null application/json; charset=utf-8 347.7754ms
+2025-05-04 15:09:16.343 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento - null null
+2025-05-04 15:09:16.344 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:16.345 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:16.345 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:16.438 -07:00 [INF] Executed DbCommand (91ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:16.440 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:16.440 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 94.0465ms
+2025-05-04 15:09:16.441 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:16.441 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento - 200 null application/json; charset=utf-8 98.1656ms
+2025-05-04 15:09:17.995 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento%20State - null null
+2025-05-04 15:09:17.996 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:17.996 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:17.997 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:18.350 -07:00 [INF] Executed DbCommand (352ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id, s.city, s.name, s.state, s.type
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE '' OR s.city ILIKE @__Format_1 ESCAPE '' OR s.state ILIKE @__Format_1 ESCAPE ''
+LIMIT @__p_2
+2025-05-04 15:09:18.352 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:18.352 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 354.9425ms
+2025-05-04 15:09:18.353 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:18.354 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacramento%20State - 200 null application/json; charset=utf-8 358.9202ms
+2025-05-04 15:09:32.679 -07:00 [INF] Application is shutting down...
+2025-05-04 15:09:35.531 -07:00 [INF] User profile is available. Using 'C:\Users\chris\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-04 15:09:35.594 -07:00 [INF] Now listening on: http://localhost:5138
+2025-05-04 15:09:35.596 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-04 15:09:35.597 -07:00 [INF] Hosting environment: Development
+2025-05-04 15:09:35.597 -07:00 [INF] Content root path: C:\Users\chris\Desktop\Hachi\hachi\server\Hachi
+2025-05-04 15:09:37.055 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/check-pre-signup - null null
+2025-05-04 15:09:37.055 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:09:37.068 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:37.068 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:37.081 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.CheckPreSignup (Hachi)'
+2025-05-04 15:09:37.081 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:09:37.083 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:09:37.086 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 32.453ms
+2025-05-04 15:09:37.088 -07:00 [INF] Route matched with {action = "CheckPreSignup", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CheckPreSignup() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:09:37.096 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:09:37.098 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:37.102 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:09:37.103 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:09:37.103 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 7.3977ms
+2025-05-04 15:09:37.156 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:09:37.168 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/check-pre-signup - null null
+2025-05-04 15:09:37.169 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:37.169 -07:00 [INF] Executed action Hachi.Controllers.AuthController.CheckPreSignup (Hachi) in 72.0835ms
+2025-05-04 15:09:37.170 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.CheckPreSignup (Hachi)'
+2025-05-04 15:09:37.170 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.CheckPreSignup (Hachi)'
+2025-05-04 15:09:37.171 -07:00 [INF] Route matched with {action = "CheckPreSignup", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CheckPreSignup() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:09:37.172 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/check-pre-signup - 200 null application/json; charset=utf-8 118.245ms
+2025-05-04 15:09:37.176 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:09:37.177 -07:00 [INF] Executed action Hachi.Controllers.AuthController.CheckPreSignup (Hachi) in 5.1316ms
+2025-05-04 15:09:37.178 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.CheckPreSignup (Hachi)'
+2025-05-04 15:09:37.179 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/check-pre-signup - 200 null application/json; charset=utf-8 10.9314ms
+2025-05-04 15:09:40.989 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/check-username/Bak2 - null null
+2025-05-04 15:09:40.990 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:40.991 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.CheckUsername (Hachi)'
+2025-05-04 15:09:40.997 -07:00 [INF] Route matched with {action = "CheckUsername", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CheckUsername(System.String) on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 15:09:42.348 -07:00 [INF] Executed DbCommand (109ms) [Parameters=[@__username_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Username" = @__username_0
+LIMIT 1
+2025-05-04 15:09:42.359 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:09:42.364 -07:00 [INF] Executed action Hachi.Controllers.AccountController.CheckUsername (Hachi) in 1366.4392ms
+2025-05-04 15:09:42.365 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.CheckUsername (Hachi)'
+2025-05-04 15:09:42.369 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/check-username/Bak2 - 200 null application/json; charset=utf-8 1379.9844ms
+2025-05-04 15:09:54.266 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacr - null null
+2025-05-04 15:09:54.267 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:54.268 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:54.270 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:54.486 -07:00 [INF] Executed DbCommand (182ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.name AS "Name", s.city AS "City", s.state AS "State", s.id AS "Id"
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE ''
+ORDER BY s.name
+LIMIT @__p_2
+2025-05-04 15:09:54.491 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType7`4[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:54.496 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 224.5396ms
+2025-05-04 15:09:54.497 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:54.497 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacr - 200 null application/json; charset=utf-8 231.4794ms
+2025-05-04 15:09:55.549 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacra - null null
+2025-05-04 15:09:55.551 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:55.551 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:55.552 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:55.766 -07:00 [INF] Executed DbCommand (179ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.name AS "Name", s.city AS "City", s.state AS "State", s.id AS "Id"
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE ''
+ORDER BY s.name
+LIMIT @__p_2
+2025-05-04 15:09:55.768 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType7`4[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:55.768 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 215.939ms
+2025-05-04 15:09:55.769 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:55.770 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=Sacra - 200 null application/json; charset=utf-8 220.3497ms
+2025-05-04 15:09:57.525 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/search?query=California%20State%20University-Sacramento%2C%20Sacramento%2C%20CA - null null
+2025-05-04 15:09:57.526 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:57.527 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:57.527 -07:00 [INF] Route matched with {action = "Search", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search(System.String) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:09:57.802 -07:00 [INF] Executed DbCommand (272ms) [Parameters=[@__Format_1='?', @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.name AS "Name", s.city AS "City", s.state AS "State", s.id AS "Id"
+FROM schools AS s
+WHERE s.name ILIKE @__Format_1 ESCAPE ''
+ORDER BY s.name
+LIMIT @__p_2
+2025-05-04 15:09:57.804 -07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType7`4[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:57.804 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.Search (Hachi) in 276.3092ms
+2025-05-04 15:09:57.805 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.Search (Hachi)'
+2025-05-04 15:09:57.806 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/search?query=California%20State%20University-Sacramento%2C%20Sacramento%2C%20CA - 200 null application/json; charset=utf-8 281.0018ms
+2025-05-04 15:09:58.765 -07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5138/api/account/complete-profile - null null
+2025-05-04 15:09:58.767 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:58.768 -07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5138/api/account/complete-profile - 204 null null 3.0704ms
+2025-05-04 15:09:58.768 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5138/api/account/complete-profile - application/json 108
+2025-05-04 15:09:58.770 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:09:58.770 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.CompleteProfile (Hachi)'
+2025-05-04 15:09:58.773 -07:00 [INF] Route matched with {action = "CompleteProfile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CompleteProfile(UserProfileUpdateRequest) on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 15:09:58.964 -07:00 [INF] Executed DbCommand (92ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Int32), @p6='?' (DbType = Boolean), @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("UserId", "AccountCreationDate", "AvatarChoice", "Birthday", "Email", "SchoolId", "Teacher", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-05-04 15:09:58.973 -07:00 [INF] AuthenticationScheme: Cookies signed in.
+2025-05-04 15:09:58.974 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[User, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:09:58.984 -07:00 [INF] Executed action Hachi.Controllers.AccountController.CompleteProfile (Hachi) in 209.7465ms
+2025-05-04 15:09:58.984 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.CompleteProfile (Hachi)'
+2025-05-04 15:09:58.985 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5138/api/account/complete-profile - 200 null application/json; charset=utf-8 216.5836ms
+2025-05-04 15:10:01.842 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:10:01.844 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:10:01.847 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:10:01.850 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:10:01.939 -07:00 [INF] Executed DbCommand (83ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:10:01.943 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:10:01.946 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 95.8693ms
+2025-05-04 15:10:01.947 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:10:01.947 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:10:01.948 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:10:01.949 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 106.6558ms
+2025-05-04 15:10:01.949 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:10:01.951 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:10:01.953 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/profile - null null
+2025-05-04 15:10:01.954 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:10:01.954 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 15:10:01.956 -07:00 [INF] Route matched with {action = "Profile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile() on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 15:10:02.030 -07:00 [INF] Executed DbCommand (77ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:10:02.032 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:10:02.033 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 80.9741ms
+2025-05-04 15:10:02.033 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:10:02.034 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 86.9527ms
+2025-05-04 15:10:02.585 -07:00 [INF] Executed DbCommand (75ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:10:02.587 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[User, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:10:02.588 -07:00 [INF] Executed action Hachi.Controllers.AccountController.Profile (Hachi) in 630.7439ms
+2025-05-04 15:10:02.589 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/profile - null null
+2025-05-04 15:10:02.589 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 15:10:02.590 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:10:02.590 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/profile - 200 null application/json; charset=utf-8 637.8095ms
+2025-05-04 15:10:02.591 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 15:10:02.593 -07:00 [INF] Route matched with {action = "Profile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile() on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 15:10:02.597 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/103925 - null null
+2025-05-04 15:10:02.598 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:10:02.599 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 15:10:02.601 -07:00 [INF] Route matched with {action = "GetSchoolById", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSchoolById(Int32) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:10:02.670 -07:00 [INF] Executed DbCommand (76ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:10:02.672 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[User, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:10:02.673 -07:00 [INF] Executed action Hachi.Controllers.AccountController.Profile (Hachi) in 78.8988ms
+2025-05-04 15:10:02.673 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 15:10:02.674 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/profile - 200 null application/json; charset=utf-8 85.1955ms
+2025-05-04 15:10:02.680 -07:00 [INF] Executed DbCommand (74ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id AS "Id", s.name AS "Name", s.city AS "City", s.state AS "State", s.type AS "Type"
+FROM schools AS s
+WHERE s.id = @__id_0
+LIMIT 1
+2025-05-04 15:10:02.682 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType8`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:10:02.684 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.GetSchoolById (Hachi) in 82.2806ms
+2025-05-04 15:10:02.685 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 15:10:02.685 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/103925 - null null
+2025-05-04 15:10:02.685 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/103925 - 200 null application/json; charset=utf-8 88.5556ms
+2025-05-04 15:10:02.686 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:10:02.688 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 15:10:02.689 -07:00 [INF] Route matched with {action = "GetSchoolById", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSchoolById(Int32) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:10:02.766 -07:00 [INF] Executed DbCommand (76ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id AS "Id", s.name AS "Name", s.city AS "City", s.state AS "State", s.type AS "Type"
+FROM schools AS s
+WHERE s.id = @__id_0
+LIMIT 1
+2025-05-04 15:10:02.768 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType8`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:10:02.769 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.GetSchoolById (Hachi) in 78.7024ms
+2025-05-04 15:10:02.769 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 15:10:02.770 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/103925 - 200 null application/json; charset=utf-8 84.7464ms
+2025-05-04 15:10:20.348 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:10:20.349 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:10:20.350 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:10:20.350 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:10:20.427 -07:00 [INF] Executed DbCommand (75ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:10:20.429 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:10:20.430 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 78.7055ms
+2025-05-04 15:10:20.430 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:10:20.430 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:10:20.431 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:10:20.432 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 84.3542ms
+2025-05-04 15:10:20.433 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:10:20.434 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:10:20.527 -07:00 [INF] Executed DbCommand (91ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:10:20.529 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:10:20.530 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 94.475ms
+2025-05-04 15:10:20.530 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:10:20.531 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 100.2733ms
+2025-05-04 15:15:08.362 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:15:08.363 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:08.364 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:15:08.364 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:15:09.054 -07:00 [INF] Executed DbCommand (80ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:15:09.055 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:15:09.056 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 691.4219ms
+2025-05-04 15:15:09.057 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:15:09.058 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:15:09.058 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 695.8639ms
+2025-05-04 15:15:09.059 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:09.060 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:15:09.061 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:15:09.141 -07:00 [INF] Executed DbCommand (78ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:15:09.143 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:15:09.144 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 81.9658ms
+2025-05-04 15:15:09.144 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:15:09.145 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 87.8033ms
+2025-05-04 15:15:09.653 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:15:09.655 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:09.655 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:15:09.656 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:15:09.738 -07:00 [INF] Executed DbCommand (80ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:15:09.740 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:15:09.741 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 83.8772ms
+2025-05-04 15:15:09.741 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:15:09.741 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:15:09.742 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:09.743 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 89.9228ms
+2025-05-04 15:15:09.744 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:15:09.745 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:15:09.756 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/profile - null null
+2025-05-04 15:15:09.757 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:09.758 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 15:15:09.758 -07:00 [INF] Route matched with {action = "Profile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile() on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 15:15:09.825 -07:00 [INF] Executed DbCommand (78ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:15:09.826 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:15:09.827 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 80.9762ms
+2025-05-04 15:15:09.828 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 15:15:09.828 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 86.7221ms
+2025-05-04 15:15:10.378 -07:00 [INF] Executed DbCommand (73ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:15:10.379 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[User, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:15:10.380 -07:00 [INF] Executed action Hachi.Controllers.AccountController.Profile (Hachi) in 620.9586ms
+2025-05-04 15:15:10.381 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/profile - null null
+2025-05-04 15:15:10.381 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 15:15:10.382 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:10.382 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/profile - 200 null application/json; charset=utf-8 626.5395ms
+2025-05-04 15:15:10.383 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 15:15:10.384 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/103925 - null null
+2025-05-04 15:15:10.385 -07:00 [INF] Route matched with {action = "Profile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile() on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 15:15:10.386 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:10.387 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 15:15:10.388 -07:00 [INF] Route matched with {action = "GetSchoolById", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSchoolById(Int32) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:15:10.467 -07:00 [INF] Executed DbCommand (78ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id AS "Id", s.name AS "Name", s.city AS "City", s.state AS "State", s.type AS "Type"
+FROM schools AS s
+WHERE s.id = @__id_0
+LIMIT 1
+2025-05-04 15:15:10.469 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType8`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:15:10.470 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.GetSchoolById (Hachi) in 81.1798ms
+2025-05-04 15:15:10.470 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 15:15:10.471 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/103925 - 200 null application/json; charset=utf-8 86.449ms
+2025-05-04 15:15:10.474 -07:00 [INF] Executed DbCommand (87ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 15:15:10.475 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[User, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 15:15:10.476 -07:00 [INF] Executed action Hachi.Controllers.AccountController.Profile (Hachi) in 89.4315ms
+2025-05-04 15:15:10.477 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 15:15:10.477 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/profile - 200 null application/json; charset=utf-8 96.5175ms
+2025-05-04 15:15:10.479 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/103925 - null null
+2025-05-04 15:15:10.480 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:10.480 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 15:15:10.481 -07:00 [INF] Route matched with {action = "GetSchoolById", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSchoolById(Int32) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 15:15:10.553 -07:00 [INF] Executed DbCommand (71ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id AS "Id", s.name AS "Name", s.city AS "City", s.state AS "State", s.type AS "Type"
+FROM schools AS s
+WHERE s.id = @__id_0
+LIMIT 1
+2025-05-04 15:15:10.554 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType8`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 15:15:10.555 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.GetSchoolById (Hachi) in 73.774ms
+2025-05-04 15:15:10.556 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 15:15:10.557 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/103925 - 200 null application/json; charset=utf-8 77.9455ms
+2025-05-04 15:15:19.005 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:15:19.006 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:19.006 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:15:19.007 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:15:19.008 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 2.9246ms
+2025-05-04 15:15:19.009 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:15:19.010 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:19.011 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:15:19.011 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:15:19.012 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 2.5233ms
+2025-05-04 15:15:20.360 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:15:20.361 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:20.362 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:15:20.363 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:15:20.363 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 2.9343ms
+2025-05-04 15:15:20.364 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 15:15:20.366 -07:00 [INF] CORS policy execution successful.
+2025-05-04 15:15:20.366 -07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-05-04 15:15:20.367 -07:00 [INF] AuthenticationScheme: Cookies was challenged.
+2025-05-04 15:15:20.367 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 401 0 null 3.2211ms
+2025-05-04 15:15:21.527 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/login/microsoft - null null
+2025-05-04 15:15:21.528 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.MicrosoftLogin (Hachi)'
+2025-05-04 15:15:21.529 -07:00 [INF] Route matched with {action = "MicrosoftLogin", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult MicrosoftLogin() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 15:15:21.538 -07:00 [INF] Executing ChallengeResult with authentication schemes (["Microsoft"]).
+2025-05-04 15:15:21.541 -07:00 [INF] AuthenticationScheme: Microsoft was challenged.
+2025-05-04 15:15:21.541 -07:00 [INF] Executed action Hachi.Controllers.AuthController.MicrosoftLogin (Hachi) in 11.3034ms
+2025-05-04 15:15:21.542 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.MicrosoftLogin (Hachi)'
+2025-05-04 15:15:21.542 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/login/microsoft - 302 0 null 15.7167ms
+2025-05-04 15:16:35.590 -07:00 [INF] Application is shutting down...
+2025-05-04 16:05:31.422 -07:00 [INF] User profile is available. Using 'C:\Users\chris\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-05-04 16:05:31.483 -07:00 [INF] Now listening on: http://localhost:5138
+2025-05-04 16:05:31.485 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-05-04 16:05:31.486 -07:00 [INF] Hosting environment: Development
+2025-05-04 16:05:31.486 -07:00 [INF] Content root path: C:\Users\chris\Desktop\Hachi\hachi\server\Hachi
+2025-05-04 16:07:13.287 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 16:07:13.301 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:13.318 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:13.328 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 16:07:14.784 -07:00 [INF] Executed DbCommand (102ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:07:14.846 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:07:14.876 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 1545.242ms
+2025-05-04 16:07:14.876 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 16:07:14.880 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:14.882 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:14.885 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:14.885 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 16:07:14.886 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 1600.1036ms
+2025-05-04 16:07:14.978 -07:00 [INF] Executed DbCommand (75ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:07:14.981 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:07:14.982 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 95.7637ms
+2025-05-04 16:07:14.983 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:14.984 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 107.9877ms
+2025-05-04 16:07:31.003 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 16:07:31.004 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:31.007 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:31.008 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 16:07:31.134 -07:00 [INF] Executed DbCommand (93ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:07:31.136 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:07:31.137 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 128.3062ms
+2025-05-04 16:07:31.138 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 16:07:31.138 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:31.139 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:31.139 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 136.9215ms
+2025-05-04 16:07:31.140 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:31.142 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 16:07:31.155 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/profile - null null
+2025-05-04 16:07:31.157 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:31.158 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 16:07:31.161 -07:00 [INF] Route matched with {action = "Profile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile() on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 16:07:31.331 -07:00 [INF] Executed DbCommand (187ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:07:31.333 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:07:31.333 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 191.0173ms
+2025-05-04 16:07:31.334 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:31.335 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 197.2325ms
+2025-05-04 16:07:31.913 -07:00 [INF] Executed DbCommand (85ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:07:31.914 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[User, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 16:07:31.919 -07:00 [INF] Executed action Hachi.Controllers.AccountController.Profile (Hachi) in 757.063ms
+2025-05-04 16:07:31.919 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/account/profile - null null
+2025-05-04 16:07:31.919 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 16:07:31.921 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/profile - 200 null application/json; charset=utf-8 765.364ms
+2025-05-04 16:07:31.921 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:31.923 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/103925 - null null
+2025-05-04 16:07:31.923 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 16:07:31.924 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:31.924 -07:00 [INF] Route matched with {action = "Profile", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile() on controller Hachi.Controllers.AccountController (Hachi).
+2025-05-04 16:07:31.925 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 16:07:31.930 -07:00 [INF] Route matched with {action = "GetSchoolById", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSchoolById(Int32) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 16:07:31.998 -07:00 [INF] Executed DbCommand (72ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:07:31.999 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`1[[User, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-05-04 16:07:32.000 -07:00 [INF] Executed action Hachi.Controllers.AccountController.Profile (Hachi) in 74.9617ms
+2025-05-04 16:07:32.001 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AccountController.Profile (Hachi)'
+2025-05-04 16:07:32.001 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/account/profile - 200 null application/json; charset=utf-8 82.2436ms
+2025-05-04 16:07:32.021 -07:00 [INF] Executed DbCommand (72ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id AS "Id", s.name AS "Name", s.city AS "City", s.state AS "State", s.type AS "Type"
+FROM schools AS s
+WHERE s.id = @__id_0
+LIMIT 1
+2025-05-04 16:07:32.023 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType8`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:07:32.025 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.GetSchoolById (Hachi) in 94.0011ms
+2025-05-04 16:07:32.025 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 16:07:32.025 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/schools/103925 - null null
+2025-05-04 16:07:32.026 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/103925 - 200 null application/json; charset=utf-8 103.3527ms
+2025-05-04 16:07:32.027 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:32.029 -07:00 [INF] Executing endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 16:07:32.030 -07:00 [INF] Route matched with {action = "GetSchoolById", controller = "Schools"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetSchoolById(Int32) on controller Hachi.Controllers.SchoolsController (Hachi).
+2025-05-04 16:07:32.106 -07:00 [INF] Executed DbCommand (74ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT s.id AS "Id", s.name AS "Name", s.city AS "City", s.state AS "State", s.type AS "Type"
+FROM schools AS s
+WHERE s.id = @__id_0
+LIMIT 1
+2025-05-04 16:07:32.108 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType8`5[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:07:32.109 -07:00 [INF] Executed action Hachi.Controllers.SchoolsController.GetSchoolById (Hachi) in 78.2066ms
+2025-05-04 16:07:32.109 -07:00 [INF] Executed endpoint 'Hachi.Controllers.SchoolsController.GetSchoolById (Hachi)'
+2025-05-04 16:07:32.110 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/schools/103925 - 200 null application/json; charset=utf-8 84.3861ms
+2025-05-04 16:07:34.590 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 16:07:34.591 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:34.592 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:34.593 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 16:07:34.681 -07:00 [INF] Executed DbCommand (87ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:07:34.683 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:07:34.684 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 90.1172ms
+2025-05-04 16:07:34.684 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 16:07:34.684 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:34.685 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:07:34.686 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 96.0114ms
+2025-05-04 16:07:34.686 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:34.688 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 16:07:34.775 -07:00 [INF] Executed DbCommand (86ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:07:34.777 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:07:34.778 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 89.2331ms
+2025-05-04 16:07:34.778 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:07:34.779 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 94.6867ms
+2025-05-04 16:08:10.204 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 16:08:10.205 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:08:10.206 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:08:10.207 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 16:08:10.291 -07:00 [INF] Executed DbCommand (82ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:08:10.292 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:08:10.293 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 85.2091ms
+2025-05-04 16:08:10.294 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5138/api/auth/validate - null null
+2025-05-04 16:08:10.294 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:08:10.295 -07:00 [INF] CORS policy execution successful.
+2025-05-04 16:08:10.295 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 91.2919ms
+2025-05-04 16:08:10.296 -07:00 [INF] Executing endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:08:10.298 -07:00 [INF] Route matched with {action = "Validate", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Validate() on controller Hachi.Controllers.AuthController (Hachi).
+2025-05-04 16:08:10.373 -07:00 [INF] Executed DbCommand (74ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."UserId", u."AccountCreationDate", u."AvatarChoice", u."Birthday", u."Email", u."SchoolId", u."Teacher", u."Username"
+FROM "Users" AS u
+WHERE u."Email" = @__email_0
+LIMIT 1
+2025-05-04 16:08:10.375 -07:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`2[[<>f__AnonymousType6`5[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[School, Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Hachi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-05-04 16:08:10.376 -07:00 [INF] Executed action Hachi.Controllers.AuthController.Validate (Hachi) in 77.3518ms
+2025-05-04 16:08:10.376 -07:00 [INF] Executed endpoint 'Hachi.Controllers.AuthController.Validate (Hachi)'
+2025-05-04 16:08:10.377 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5138/api/auth/validate - 200 null application/json; charset=utf-8 83.2056ms
