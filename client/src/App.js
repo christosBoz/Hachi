@@ -7,6 +7,7 @@ import FirstSignUp from "./pages/firstSignUp";
 import ProtectedRoute from "./ProtectedRoute"; // ← import it
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/dashboard";
+import Teacher from "./pages/TeacherDash"
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />,
+          <Route
+            path="/teach"
+            element={
+              <ProtectedRoute>
+                <Teacher />
               </ProtectedRoute>
             }
           />,
