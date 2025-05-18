@@ -14,7 +14,7 @@ import { borderRadius, color, display, margin, width } from '@mui/system';
 
 
 
-function CreateFolderForm({ school, setSchool, className, setClassName, subject, setSubject, onSubmit, onClose, }) {
+function CreateFolderForm({ school, setSchool, folderName, setFolderName, subject, setSubject, onSubmit, onClose, }) {
   
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const handleFileUpload = (file) => {
@@ -42,8 +42,8 @@ function CreateFolderForm({ school, setSchool, className, setClassName, subject,
           <input
             style={styles.input}
             type="text"
-            value={className}
-            onChange={(e) => setClassName(e.target.value)}
+            value={folderName}
+            onChange={(e) => setFolderName(e.target.value)}
             placeholder="Enter folder name"
           />
           <label style={styles.label}>Folder Icon</label>
@@ -243,11 +243,14 @@ export default function Dashboard() {
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [createFolderOpen, setCreateFolderOpen] = useState(false);
   const [school, setSchool] = useState('');
-  const [className, setClassName] = useState('');
+  const [folderName, setFolderName] = useState('');
   const [subject, setSubject] = useState('');
   const [showMoreInfo, setShowMoreInfo] = useState(false);
 
 
+  const handleCreateFolder = () => {
+    console.log("foldername ", folderName)
+  }
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
@@ -263,11 +266,11 @@ export default function Dashboard() {
         <CreateFolderForm
           school={school}
           setSchool={setSchool}
-          className={className}
-          setClassName={setClassName}
+          folderName={folderName}
+          setFolderName={setFolderName}
           subject={subject}
           setSubject={setSubject}
-          // onSubmit={handleCreateFolder}
+          onSubmit={handleCreateFolder}
           onClose={() => setCreateFolderOpen(false)}
         />
       )}
