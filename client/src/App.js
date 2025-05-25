@@ -8,6 +8,7 @@ import ProtectedRoute from "./ProtectedRoute"; // ← import it
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/dashboard";
 import Teacher from "./pages/TeacherDash"
+import FlashCard from "./pages/flashcard";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/fsu" element={<FirstSignUp />} />
+          <Route path="/flash" element={<FlashCard />} />
           <Route
             path="/test"
             element={
@@ -49,6 +51,14 @@ function App() {
               </ProtectedRoute>
             }
           />,
+          {/* <Route
+            path="/flash"
+            element={
+              <ProtectedRoute>
+                <FlashCard />
+              </ProtectedRoute>
+            }
+          />, */}
         </Routes>
       </Router>
     </UserProvider>

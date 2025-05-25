@@ -1,6 +1,7 @@
 // App.jsx or Dashboard.jsx (Main page)
 import React, { useState } from 'react';
 import CreateFolderForm from '../components/CreateFolderForm';
+// import CreateFlashPopUp from '../components/FlashCardPopUp';
 import { Box, Typography, IconButton } from '@mui/material';
 import HachiLogoLong from '../assets/HachiLogoLong.png';
 import SearchBar from '../components/Searchbar';
@@ -126,6 +127,7 @@ function Sidebar({ onCreateFolder }) {
 
 export default function Dashboard() {
   const [createFolderOpen, setCreateFolderOpen] = useState(false);
+  const [flashPopUpOpen, setFlashPopUpOpen] = useState(false);
   const [school, setSchool] = useState('');
   const [folderName, setFolderName] = useState('');
   const [subject, setSubject] = useState('');
@@ -159,6 +161,7 @@ export default function Dashboard() {
           onClose={() => setCreateFolderOpen(false)}
         />
       )}
+
     </Box>
   );
 }
