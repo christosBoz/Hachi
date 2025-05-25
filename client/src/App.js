@@ -8,8 +8,12 @@ import ProtectedRoute from "./ProtectedRoute"; // ← import it
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/dashboard";
 import Teacher from "./pages/TeacherDash"
+<<<<<<< HEAD
 import FlashCard from "./pages/flashcard";
 
+=======
+import Folder from "./pages/Folder"
+>>>>>>> dc62a5a75bf34c9428a7abef5684ad78c502fa49
 function App() {
   return (
     <UserProvider>
@@ -40,6 +44,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />,
+          <Route
+            path="/folder/:name"
+            element={
+              <ProtectedRoute>
+                <Folder />
               </ProtectedRoute>
             }
           />,

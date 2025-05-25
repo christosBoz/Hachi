@@ -1,7 +1,6 @@
-// App.jsx or Dashboard.jsx (Main page)
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import CreateFolderForm from '../components/CreateFolderForm';
-// import CreateFlashPopUp from '../components/FlashCardPopUp';
 import { Box, Typography, IconButton } from '@mui/material';
 import HachiLogoLong from '../assets/HachiLogoLong.png';
 import SearchBar from '../components/Searchbar';
@@ -9,9 +8,6 @@ import notification from '../assets/sidebarIcons/notification.png';
 import plusIcon from '../assets/sidebarIcons/plusIcon.png';
 import defaultpic from '../assets/defaultprofilepic.png';
 import Sidebar from '../components/sidebar';
-
-
-
 
 function Banner({ onCreateFolder }) {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
@@ -88,13 +84,10 @@ function Banner({ onCreateFolder }) {
   );
 }
 
+export default function Folder() {
+  const { name: folderNameParam } = useParams();
 
-
-
-
-export default function Dashboard() {
   const [createFolderOpen, setCreateFolderOpen] = useState(false);
-  const [flashPopUpOpen, setFlashPopUpOpen] = useState(false);
   const [school, setSchool] = useState('');
   const [folderName, setFolderName] = useState('');
   const [subject, setSubject] = useState('');
@@ -113,7 +106,9 @@ export default function Dashboard() {
       <Box sx={{ display: "flex", flexGrow: 1 }}>
         <Sidebar onCreateFolder={() => setCreateFolderOpen(true)} />
         <Box sx={{ flexGrow: 1, padding: 3 }}>
-          <Typography variant="h4">Welcome to the Dashboard</Typography>
+          <Typography variant="h4">
+            Welcome to the "{decodeURIComponent(folderNameParam)}" Folder
+          </Typography>
         </Box>
       </Box>
       {createFolderOpen && (
@@ -128,7 +123,6 @@ export default function Dashboard() {
           onClose={() => setCreateFolderOpen(false)}
         />
       )}
-
     </Box>
   );
 }
