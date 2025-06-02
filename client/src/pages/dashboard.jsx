@@ -1,6 +1,6 @@
 // App.jsx or Dashboard.jsx (Main page)
 import React, { useState, useEffect } from 'react';
-import CreateFolderForm from '../components/CreateFolderForm';
+import CreateFolderForm from '../components/CreateFolderForm/CreateFolderForm';
 // import CreateFlashPopUp from '../components/FlashCardPopUp';
 import { Box, Typography, IconButton } from '@mui/material';
 import HachiLogoLong from '../assets/HachiLogoLong.png';

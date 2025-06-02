@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/sidebar';
-import Banner from "../components/Banner";
+import Banner from "../components/Banner/Banner";
 import SearchBar from '../components/Searchbar';
 import homeIcon from '../assets/sidebarIcons/homeIcon.png';
 import folderIcon from '../assets/sidebarIcons/folderIcon.png';

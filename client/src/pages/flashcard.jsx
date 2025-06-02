@@ -1,272 +1,134 @@
-import { useState, useEffect } from "react";
-import {
-  Container,
-  TextField,
-  Typography,
-  Grid,
-  Paper,
-  Button,
-  Box,
-} from "@mui/material";
+// App.jsx or Dashboard.jsx (Main page)
+import React, { useState, useEffect } from 'react';
+import CreateFolderForm from '../components/CreateFolderForm/CreateFolderForm';
+// import CreateFlashPopUp from '../components/FlashCardPopUp';
+import { Box, Typography, IconButton } from '@mui/material';
+import HachiLogoLong from '../assets/HachiLogoLong.png';
+import SearchBar from '../components/Searchbar';
+import notification from '../assets/sidebarIcons/notification.png';
+import plusIcon from '../assets/sidebarIcons/plusIcon.png';
+import defaultpic from '../assets/defaultprofilepic.png';
+import Sidebar from '../components/sidebar';
 
-function FlashCard() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [cards, setCards] = useState([{ front: "", back: "" }]);
-  const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const [flipped, setFlipped] = useState(false);
-  const [showTopBar, setShowTopBar] = useState(false);
 
-  const handleCardChange = (index, field, value) => {
-    const newCards = [...cards];
-    newCards[index][field] = value;
-    setCards(newCards);
-  };
 
-  const handleSave = () => {
-    const nonEmptyCards = cards.filter(
-      (card) => card.front.trim() !== "" || card.back.trim() !== ""
-    );
-    console.log("Saving Cards: ", nonEmptyCards);
-  };
 
-  const addCard = () => {
-    const newCards = [...cards];
-    newCards.splice(activeCardIndex + 1, 0, { front: "", back: "" });
-    setCards(newCards);
-    setActiveCardIndex(activeCardIndex + 1);
-  };
+function Banner({ onCreateFolder }) {
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [showPlusDropdown, setShowPlusDropdown] = useState(false);
 
-  useEffect(() => {
-    setFlipped(false);
-  }, [activeCardIndex]);
+  const ProfileDropdown = () => (
+    <Box sx={{
+      position: 'absolute',
+      top: '48px',
+      right: 0,
+      width: '180px',
+      bgcolor: 'white',
+      border: '1px solid #ccc',
+      borderRadius: 1,
+      boxShadow: 2,
+      zIndex: 10
+    }}>
+      {[{ label: 'Settings' }, { label: 'Logout' }].map((item, idx) => (
+        <Box
+          key={idx}
+          onClick={() => console.log(item.label)}
+          sx={{ p: 2, cursor: 'pointer', '&:hover': { backgroundColor: '#f7f7f7' } }}
+        >
+          {item.label}
+        </Box>
+      ))}
+    </Box>
+  );
+
+  const PlusDropdown = () => (
+    <Box sx={{
+      position: 'absolute',
+      top: '48px',
+      right: 48,
+      width: '180px',
+      bgcolor: 'white',
+      border: '1px solid #ccc',
+      borderRadius: 1,
+      boxShadow: 2,
+      zIndex: 10
+    }}>
+      {[{ label: 'Create Folder', action: onCreateFolder }, { label: 'Flashcards' }, { label: 'Notes' }].map((item, idx) => (
+        <Box
+          key={idx}
+          onClick={item.action || (() => console.log(item.label))}
+          sx={{ p: 2, cursor: 'pointer', '&:hover': { backgroundColor: '#f7f7f7' } }}
+        >
+          {item.label}
+        </Box>
+      ))}
+    </Box>
+  );
 
   return (
-    <Container maxWidth="xl" sx={{ py: 4, overflowY: "auto" }}>
-      <Typography variant="h4" gutterBottom>
-        Create Flashcard Set
-      </Typography>
-
-      {/* Topbar (Title & Description Inputs) */}
-      {showTopBar && (
-        <Paper elevation={2} sx={{ p: 3, mb: 3, borderRadius: 2 }}>
-          <Typography variant="h6" gutterBottom>
-            Flashcard Set Details
-          </Typography>
-          <TextField
-            fullWidth
-            label="Enter FlashCard Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            margin="normal"
-          />
-          <TextField
-            fullWidth
-            label="Description"
-            multiline
-            minRows={4}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            margin="normal"
-          />
-        </Paper>
-      )}
-
-      {/* Top buttons */}
-      <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
-        <Button variant="contained" onClick={handleSave}>
-          Save Cards
-        </Button>
-        <Button
-          variant="outlined"
-          onClick={() => setShowTopBar(!showTopBar)}
-        >
-          {showTopBar ? "Hide Top Bar" : "Show Top Bar"}
-        </Button>
+    <Box sx={{ display: 'flex', alignItems: 'center', height: '64px', px: 3, borderBottom: '1px solid #ddd', position: 'relative' }}>
+      <img src={HachiLogoLong} alt="Hachi Logo" style={{ height: '100%' }} />
+      <Box sx={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', width: '40%' }}>
+        <SearchBar onSearch={(text) => console.log("Search submitted:", text)} />
       </Box>
-
-      <Grid container spacing={4} alignItems="flex-start">
-        {/* Editor Panel */}
-        <Grid item xs={12} md={6}>
-          <Paper
-            elevation={3}
-            sx={{
-              p: 2,
-              height: "75vh",
-              overflowY: "auto",
-              backgroundColor: "#fafafa",
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              borderRadius: 2,
-              border: "1px solid #e0e0e0",
-            }}
-          >
-            {cards.map((card, index) => (
-              <Box
-                key={index}
-                sx={{
-                  border:
-                    index === activeCardIndex
-                      ? "2px solid #1976d2"
-                      : "1px solid #ccc",
-                  borderRadius: "8px",
-                  p: 2,
-                  cursor: "pointer",
-                  backgroundColor:
-                    index === activeCardIndex ? "#e3f2fd" : "#fff",
-                  transition: "background-color 0.3s, box-shadow 0.3s",
-                  "&:hover": {
-                    boxShadow: 2,
-                    backgroundColor: "#f9f9f9",
-                  },
-                }}
-                onClick={() => setActiveCardIndex(index)}
-              >
-                <Typography variant="subtitle1" fontWeight="bold">
-                  Card {index + 1}
-                </Typography>
-
-                <TextField
-                  fullWidth
-                  label="Front"
-                  placeholder="Enter term"
-                  value={card.front}
-                  onChange={(e) =>
-                    handleCardChange(index, "front", e.target.value)
-                  }
-                  margin="dense"
-                />
-
-                <TextField
-                  fullWidth
-                  label="Back"
-                  placeholder="Enter definition"
-                  multiline
-                  minRows={3}
-                  value={card.back}
-                  onChange={(e) =>
-                    handleCardChange(index, "back", e.target.value)
-                  }
-                  margin="dense"
-                />
-
-                <Button
-                  variant="text"
-                  onClick={() => {
-                    const newCards = [...cards];
-                    newCards.splice(index + 1, 0, { front: "", back: "" });
-                    setCards(newCards);
-                    setActiveCardIndex(index + 1);
-                  }}
-                  sx={{ mt: 1 }}
-                >
-                  + Add card below
-                </Button>
-              </Box>
-            ))}
-          </Paper>
-        </Grid>
-
-        {/* Live Preview */}
-        <Grid item xs={12} md={6}>
-          <Paper
-            elevation={3}
-            sx={{
-              width: "100%",
-              minHeight: "75vh",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              p: 3,
-              borderRadius: 2,
-              backgroundColor: "#f5f5f5",
-            }}
-          >
-            <Typography variant="h6" gutterBottom>
-              Preview (Card {activeCardIndex + 1})
-            </Typography>
-
-            <Box
-              onClick={() => setFlipped(!flipped)}
-              sx={{
-                width: "600px",
-                height: "400px",
-                perspective: "1000px",
-              }}
-            >
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  position: "relative",
-                  transformStyle: "preserve-3d",
-                  transition: "transform 0.6s",
-                  transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
-                }}
-              >
-                {/* Front Side */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    width: "100%",
-                    height: "100%",
-                    backfaceVisibility: "hidden",
-                    backgroundColor: "#f9f9f9",
-                    borderRadius: "12px",
-                    boxShadow: 3,
-                    p: 2,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <Box>
-                    <Typography variant="subtitle2" fontWeight="bold">
-                      Front
-                    </Typography>
-                    <Typography>
-                      {cards[activeCardIndex]?.front || <i>Empty</i>}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                {/* Back Side */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    width: "100%",
-                    height: "100%",
-                    backfaceVisibility: "hidden",
-                    transform: "rotateY(180deg)",
-                    backgroundColor: "#e6f7ff",
-                    borderRadius: "12px",
-                    boxShadow: 3,
-                    p: 2,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <Box>
-                    <Typography variant="subtitle2" fontWeight="bold">
-                      Back
-                    </Typography>
-                    <Typography>
-                      {cards[activeCardIndex]?.back || <i>Empty</i>}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-          </Paper>
-        </Grid>
-      </Grid>
-    </Container>
+      <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', gap: 2 }}>
+        <img src={notification} alt="notification" style={{ height: '32px', cursor: 'pointer' }} />
+        <img src={plusIcon} alt="plus" style={{ height: '32px', cursor: 'pointer' }} onClick={() => {
+          setShowPlusDropdown(prev => !prev);
+          setShowProfileDropdown(false);
+        }} />
+        <img src={defaultpic} alt="profile" style={{ height: '32px', borderRadius: '50%', cursor: 'pointer' }} onClick={() => {
+          setShowProfileDropdown(prev => !prev);
+          setShowPlusDropdown(false);
+        }} />
+        {showPlusDropdown && <PlusDropdown />}
+        {showProfileDropdown && <ProfileDropdown />}
+      </Box>
+    </Box>
   );
 }
 
-export default FlashCard;
+
+
+
+
+export default function Dashboard() {
+  const [createFolderOpen, setCreateFolderOpen] = useState(false);
+  const [flashPopUpOpen, setFlashPopUpOpen] = useState(false);
+  const [school, setSchool] = useState('');
+  const [folderName, setFolderName] = useState('');
+  const [subject, setSubject] = useState('');
+
+  const handleCreateFolder = ({ folderName, school, subject, file }) => {
+    console.log("Folder Name:", folderName);
+    console.log("School:", school);
+    console.log("Subject:", subject);
+    console.log("Image File:", file);
+    setCreateFolderOpen(false);
+  };
+
+  return (
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <Banner onCreateFolder={() => setCreateFolderOpen(true)} />
+      <Box sx={{ display: "flex", flexGrow: 1 }}>
+        <Sidebar onCreateFolder={() => setCreateFolderOpen(true)} />
+        <Box sx={{ flexGrow: 1, padding: 3 }}>
+          <Typography variant="h4">Welcome to the Dashboard</Typography>
+        </Box>
+      </Box>
+      {createFolderOpen && (
+        <CreateFolderForm
+          school={school}
+          setSchool={setSchool}
+          folderName={folderName}
+          setFolderName={setFolderName}
+          subject={subject}
+          setSubject={setSubject}
+          onSubmit={handleCreateFolder}
+          onClose={() => setCreateFolderOpen(false)}
+        />
+      )}
+
+    </Box>
+  );
+}

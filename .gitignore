@@ -1,6 +1,6 @@
 # ASP.NET Core build outputs
 bin/
-obj/
+**obj/
 
 # ASP.NET Core user secrets
 secrets/

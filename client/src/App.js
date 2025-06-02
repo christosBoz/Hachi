@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext";
 import Home from "./pages/Home";
-import Login from "./pages/LogIn";
+import Login from "./pages/Login/Login";
 import Test from "./pages/test";
 import FirstSignUp from "./pages/firstSignUp";
 import ProtectedRoute from "./ProtectedRoute"; // ← import it

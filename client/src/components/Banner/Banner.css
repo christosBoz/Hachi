@@ -1,0 +1,9 @@
+.banner {
+  background-color: white;
+  height: 5.5vh;
+  display: flex;
+  align-items: center;
+  padding: 0 1vw;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CreateFolderForm from '../components/CreateFolderForm';
+import CreateFolderForm from '../components/CreateFolderForm/CreateFolderForm';
 import { Box, Typography, IconButton } from '@mui/material';
 import HachiLogoLong from '../assets/HachiLogoLong.png';
 import SearchBar from '../components/Searchbar';
