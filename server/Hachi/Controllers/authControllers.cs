@@ -4,33 +4,29 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;  // Add this line to use ClaimTypes
+using System.Security.Claims;
 using Hachi.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;  // Make sure this namespace is included
-using Microsoft.EntityFrameworkCore;
-
 
 namespace Hachi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-            public class AuthController : ControllerBase
+    public class AuthController : ControllerBase
+    {
+        private readonly HttpClient _httpClient;
+        private readonly ILogger<AuthController> _logger;
+        private readonly AppDbContext _context;
+
+        public AuthController(HttpClient httpClient, ILogger<AuthController> logger, AppDbContext context)
         {
-            private readonly HttpClient _httpClient;
-            private readonly ILogger<AuthController> _logger;  // Inject ILogger here
-            private readonly AppDbContext _context;
-
-
-            public AuthController(HttpClient httpClient, ILogger<AuthController> logger, AppDbContext context)
-            {
-                _httpClient = httpClient;
-                _logger = logger ?? throw new ArgumentNullException(nameof(logger)); // Ensure the logger is not null
-                _context = context ?? throw new ArgumentNullException(nameof(context));
-
-            }
-
+            _httpClient = httpClient;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
 
         [HttpGet("login/google")]
         public IActionResult GoogleLogin()
@@ -67,15 +63,15 @@ namespace Hachi.Controllers
             if (string.IsNullOrEmpty(email))
                 return Unauthorized(new { message = "No email claim found" });
 
-            // Call your DB to check if the user exists
-            var response = await _httpClient.GetAsync($"http://localhost:5138/api/account/exists?email={email}");
+            // Check if user exists in DB
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
-            if (response.IsSuccessStatusCode)
+            if (user != null)
             {
-                // ✅ Fully registered user → sign them in with cookies
                 var claimsIdentity = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Email, email)
+                    new Claim(ClaimTypes.Email, email),
+                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
                 }, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var principal = new ClaimsPrincipal(claimsIdentity);
@@ -84,8 +80,7 @@ namespace Hachi.Controllers
                 return Redirect("http://localhost:3000/test");
             }
 
-            // ❌ Not fully registered → no cookie login yet
-            // → Set temp cookie or session
+            // If user is not registered, set temporary pre-signup cookie
             Response.Cookies.Append("pre_signup_email", email, new CookieOptions
             {
                 HttpOnly = true,
@@ -96,45 +91,67 @@ namespace Hachi.Controllers
             return Redirect("http://localhost:3000/fsu");
         }
 
-
-    [HttpGet("MicrosoftResponse")]
-    public async Task<IActionResult> MicrosoftResponse()
-    {
-        // Log the start of the method
-        _logger.LogInformation("Starting MicrosoftResponse method.");
-
-        var authenticateResult = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        if (!authenticateResult.Succeeded)
-            return Unauthorized();
-
-        var claims = authenticateResult.Principal?.Identities.FirstOrDefault()?.Claims;
-        var email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-
-        if (string.IsNullOrEmpty(email))
+        [HttpGet("MicrosoftResponse")]
+        public async Task<IActionResult> MicrosoftResponse()
         {
-            _logger.LogWarning("No email claim found for the user.");
-            return Unauthorized(new { message = "No email claim found" });
+            _logger.LogInformation("Starting MicrosoftResponse method.");
+
+            var authenticateResult = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            if (!authenticateResult.Succeeded)
+                return Unauthorized();
+
+            var claims = authenticateResult.Principal?.Identities.FirstOrDefault()?.Claims;
+            var email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+            if (string.IsNullOrEmpty(email))
+            {
+                _logger.LogWarning("No email claim found for the user.");
+                return Unauthorized(new { message = "No email claim found" });
+            }
+
+            _logger.LogInformation("Email found: {Email}", email);
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user != null)
+            {
+                var claimsIdentity = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Email, email),
+                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
+                }, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var principal = new ClaimsPrincipal(claimsIdentity);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                return Redirect("http://localhost:3000/test");
+            }
+
+            Response.Cookies.Append("pre_signup_email", email, new CookieOptions
+            {
+                HttpOnly = true,
+                SameSite = SameSiteMode.None,
+                Secure = true
+            });
+
+            return Redirect("http://localhost:3000/fsu");
         }
-
-        _logger.LogInformation("Email found: {Email}", email);
-
-        // Make an internal API call to check if the user exists
-        var userExistsResponse = await _httpClient.GetAsync($"http://localhost:5138/api/account/exists?email={email}");
-
-        if (userExistsResponse.IsSuccessStatusCode)
-        {
-            return Redirect("http://localhost:3000/test");
-        }
-
-        return Redirect("http://localhost:3000/fsu");
-    }
 
         [Authorize]
         [HttpGet("profile")]
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
-            var claims = User.Claims.Select(c => new { c.Type, c.Value });
-            return Ok(claims);
+            var email = User.FindFirst(ClaimTypes.Email)?.Value;
+
+            if (email == null)
+                return Unauthorized(new { message = "User is not authenticated." });
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+                return NotFound(new { message = "User not found." });
+
+            return Ok(new { user });
         }
 
         [Authorize]
@@ -144,6 +161,7 @@ namespace Hachi.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Ok(new { message = "Logged out" });
         }
+
         [HttpGet("check-pre-signup")]
         public IActionResult CheckPreSignup()
         {
@@ -153,6 +171,7 @@ namespace Hachi.Controllers
 
             return Ok(new { email });
         }
+
         [Authorize]
         [HttpGet("validate")]
         public async Task<IActionResult> Validate()
@@ -166,7 +185,6 @@ namespace Hachi.Controllers
 
             if (user == null || string.IsNullOrEmpty(user.Username) || user.Birthday == null || user.SchoolId == 0)
             {
-                // ❌ Not a valid user → log out
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 return Unauthorized(new { message = "Incomplete profile — signed out" });
             }
@@ -185,6 +203,12 @@ namespace Hachi.Controllers
             });
         }
 
-
+        [HttpGet("whoami")]
+        public IActionResult WhoAmI()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var email = User.FindFirst(ClaimTypes.Email)?.Value;
+            return Ok(new { userId, email });
+        }
     }
 }

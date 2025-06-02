@@ -5,6 +5,8 @@ public class AppDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<OAuth> OAuth { get; set; }
     public DbSet<School> Schools { get; set; }
+    public DbSet<Folder> Folders { get; set; }
+
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {

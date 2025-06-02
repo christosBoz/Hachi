@@ -8,6 +8,8 @@ using DotNetEnv;
 using Serilog;
 using Hachi.Controllers;
 using System.Security.Claims;
+using Amazon.S3;
+
 using System.Net.Http;
 
 Env.Load("../../.env");  // This loads the .env file (if you have environment variables in a .env file)
@@ -45,6 +47,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddHttpClient(); // Add this line to register HttpClient
+builder.Services.AddAWSService<IAmazonS3>();
 
 // Authentication setup (Google & Microsoft OAuth)
 builder.Services.AddAuthentication(options =>
@@ -99,12 +102,8 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient<AuthController>(); // Add this line to register HttpClient for AuthController
 
 var app = builder.Build();
-
-// Use CORS policy
-app.UseCors("AllowAll");
-
-// Use authentication and authorization middleware
-app.UseAuthentication();
+app.UseCors("AllowAll"); // CORS must come early
+app.UseAuthentication(); // BEFORE UseAuthorization
 app.UseAuthorization();
 
 // Ensure controllers are mapped
