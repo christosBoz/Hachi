@@ -15,6 +15,17 @@ function SignUpForm () {
   return (
     <div className="sign-up-form">
       <h2>Create your Hachi account</h2>
+      <div className="choices-box">
+            <button className="login-btn google"
+             onClick={() => {
+              window.location.href = "http://localhost:5138/api/auth/login/google";
+            }}
+            >
+              Sign Up with Google</button>
+            <button className="login-btn apple">Sign Up with Microsoft</button>
+            <button className="login-btn microsoft">Sign Up with Facebook</button>
+            <button className="login-btn apple">Sign Up with Apple</button>
+          </div>
       <form className="login-form">
         <label>Email</label>
         <input type="email" placeholder="you@example.com" />
@@ -122,7 +133,7 @@ export default function Login() {
             <button className="login-btn primary">Log in</button>
           </form>
   
-          <button className="login-btn secondary">Create an account</button>
+          {/* <button className="login-btn secondary">Create an account</button> */}
           </>
       )}
         </div>
