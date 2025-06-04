@@ -22,30 +22,34 @@ function FirstSignUp() {
 
   const navigate = useNavigate();
 
-  // ✅ Check for pre_signup_email cookie by pinging the backend
-  useEffect(() => {
-    const checkPreSignup = async () => {
-      try {
-        const res = await fetch("http://localhost:5138/api/auth/check-pre-signup", {
-          credentials: "include",
-        });
+ useEffect(() => {
+  const checkPreSignup = async () => {
+    try {
+      const res = await fetch("http://localhost:5138/api/auth/check-pre-signup", {
+        credentials: "include",
+      });
 
-        if (res.ok) {
-          const data = await res.json();
-          setMessage(`Signing up as: ${data.email}`);
+      if (res.ok) {
+        const data = await res.json();
+
+        if (data.exists) {
+          navigate("/dash"); // User already has an account
         } else {
-          navigate("/"); // 🚫 No cookie/session, redirect home
+          setMessage(`Signing up as: ${data.email}`);
         }
-      } catch (err) {
-        console.error("Error checking pre-signup:", err);
-        navigate("/");
-      } finally {
-        setLoading(false);
+      } else {
+        navigate("/"); // No session/token — redirect to home/login
       }
-    };
+    } catch (err) {
+      console.error("Error checking pre-signup:", err);
+      navigate("/");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    checkPreSignup();
-  }, [navigate]);
+  checkPreSignup();
+}, [navigate]);
 
   const nextStep = async () => {
     if (step === 1) {

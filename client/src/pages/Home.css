@@ -1,5 +1,6 @@
 body {
   overflow: hidden; /* Hide scrollbars */
+  margin: 0px;
 }
 .slideshow {
     width: 100%;

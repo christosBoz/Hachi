@@ -1,57 +1,53 @@
-import { createContext, useContext, useEffect, useState } from "react";
+// src/contexts/UserContext.jsx
+import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import {
+  getCurrentUser,
+  fetchAuthSession,
+  signOut as amplifySignOut,
+} from "aws-amplify/auth";
+import { Hub } from "aws-amplify/utils";
 
-const UserContext = createContext(undefined);
+const UserContext = createContext();
 
-export function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [profileComplete, setProfileComplete] = useState(false);
-  const [loading, setLoading] = useState(true); // For initial loading state
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(undefined);
 
-  useEffect(() => {
-    let hasValidated = false;
+  const checkUser = useCallback(async () => {
+    try {
+      const currentUser = await getCurrentUser();
+      const session = await fetchAuthSession();
+      const idToken = session.tokens?.idToken?.toString();
 
-    const validateSession = async () => {
-      if (hasValidated) return; // 🧠 Don't revalidate if we already did
-      hasValidated = true;
-
-      try {
-        const res = await fetch("http://localhost:5138/api/auth/validate", {
-          credentials: "include",
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          setUser(data.user);
-          setProfileComplete(data.profileComplete);
-        } else {
-          setUser(null);
-          setProfileComplete(false);
-        }
-      } catch (err) {
-        console.error("Session validation failed:", err);
+      if (idToken) {
+        localStorage.setItem("idToken", idToken);
+        setUser(currentUser);
+      } else {
         setUser(null);
-        setProfileComplete(false);
-      } finally {
-        setLoading(false);
       }
-    };
-
-    validateSession(); // ✅ Called once on first mount
+    } catch (err) {
+      console.error("Failed to fetch user from session", err);
+      setUser(null);
+    }
   }, []);
 
+  useEffect(() => {
+    checkUser();
+
+    const listener = (data) => {
+      const { event } = data.payload;
+      if (event === "signedIn") checkUser();
+      if (event === "signedOut") setUser(null);
+    };
+
+    Hub.listen("auth", listener);
+    return () => Hub.remove("auth", listener);
+  }, [checkUser]);
+
   return (
-    <UserContext.Provider
-      value={{ user, setUser, profileComplete, setProfileComplete, loading }}
-    >
+    <UserContext.Provider value={{ user, setUser, checkUser }}>
       {children}
     </UserContext.Provider>
   );
-}
+};
 
-export function useUser() {
-  const context = useContext(UserContext);
-  if (context === undefined) {
-    throw new Error("useUser must be used within a UserProvider");
-  }
-  return context;
-}
+export const useUser = () => useContext(UserContext);

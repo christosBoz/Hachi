@@ -1,76 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { UserProvider } from "./contexts/UserContext";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
-import Test from "./pages/test";
+import AuthCallback from "./pages/AuthCallback";
 import FirstSignUp from "./pages/firstSignUp";
-import ProtectedRoute from "./ProtectedRoute"; // ← import it
-import Profile from "./pages/Profile";
 import Dashboard from "./pages/dashboard";
-import Teacher from "./pages/TeacherDash"
-import Folder from "./pages/Folder"
-import FlashCard from "./pages/flashcard";
+import ProtectedRoute from "./ProtectedRoute";
+import Logout from "./pages/Logout";
+
+import PublicOnlyRoute from "./PublicOnlyRoute";
+
 function App() {
   return (
-    <UserProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/fsu" element={<FirstSignUp />} />
-          <Route path="/flash" element={<FlashCard />} />
-          <Route
-            path="/test"
-            element={
-              <ProtectedRoute>
-                <Test />
-              </ProtectedRoute>
-            }
-          />,
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />,
-          <Route
-            path="/dash"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />,
-          <Route
-            path="/folder/:name"
-            element={
-              <ProtectedRoute>
-                <Folder />
-              </ProtectedRoute>
-            }
-          />,
-          <Route
-            path="/teach"
-            element={
-              <ProtectedRoute>
-                <Teacher />
-              </ProtectedRoute>
-            }
-          />,
-          <Route
-            path="/flash"
-            element={
-              <ProtectedRoute>
-                <FlashCard />
-              </ProtectedRoute>
-            }
-          />,
-        </Routes>
-      </Router>
-    </UserProvider>
+    <Routes>
+      <Route path="/" element={<PublicOnlyRoute><Home /></PublicOnlyRoute>} />
+      <Route path="/login" element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
+      <Route path="/auth/callback" element={<AuthCallback />} />
+      <Route path="/fsu" element={<FirstSignUp />} />
+      <Route path="/dash" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+      <Route path="/logout" element={<Logout />} />
+    </Routes>
   );
 }
+
 
 export default App;
