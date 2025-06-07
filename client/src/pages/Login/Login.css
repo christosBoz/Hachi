@@ -175,3 +175,15 @@
   color: #555;
 }
 
+.text-button {
+  background: none;
+  border: none;
+  color: #6b5b95;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+.text-button:hover {
+  text-decoration: none;
+}
