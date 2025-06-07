@@ -12,6 +12,21 @@ import { useUser } from "../../contexts/UserContext";
 import studyOctopus from "../../assets/Hachi-Studying.png";
 import "./Login.css";
 
+const providerLogos = {
+  Google: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png",
+  Facebook: "https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png",
+  Microsoft: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+};
+
+function ThirdPartyButton({ provider, onClick }) {
+  return (
+    <button className={`login-btn third-party ${provider.toLowerCase()}`} onClick={onClick}>
+      <img src={providerLogos[provider]} alt={`${provider} logo`} className="provider-logo" />
+      {`Log in with ${provider}`}
+    </button>
+  );
+}
+
 function EmailLoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -71,16 +86,6 @@ function EmailLoginForm() {
           <label>Email</label>
           <input name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-          
-
-          <label>Password</label>
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <button
               type="button"
@@ -94,6 +99,15 @@ function EmailLoginForm() {
               Forgot Password?
             </button>
           </div>
+
+          <label>Password</label>
+          <input
+            name="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
           {error && <p className="error-text">{error}</p>}
           <button className="login-btn primary" type="submit">
             Log in
@@ -234,15 +248,9 @@ function SignUpForm() {
     <div className="sign-up-form">
       <h2>Create your Hachi account</h2>
       <div className="choices-box">
-        <button className="login-btn" onClick={() => handleFederatedSignUp("Google")}>
-          Sign Up with Google
-        </button>
-        <button className="login-btn" onClick={() => handleFederatedSignUp("Facebook")}>
-          Sign Up with Facebook
-        </button>
-        <button className="login-btn" onClick={() => handleFederatedSignUp({ customProvider: "Microsoft" })}>
-          Sign Up with Microsoft
-        </button>
+        <ThirdPartyButton provider="Google" onClick={() => handleFederatedSignUp("Google")} />
+        <ThirdPartyButton provider="Facebook" onClick={() => handleFederatedSignUp("Facebook")} />
+        <ThirdPartyButton provider="Microsoft" onClick={() => handleFederatedSignUp("Microsoft")} />
       </div>
       <div className="divider">or sign up with email</div>
       {showConfirm ? (
@@ -317,15 +325,9 @@ export default function Login() {
           ) : (
             <>
               <div className="choices-box">
-                <button className="login-btn" onClick={() => handleFederatedLogin("Google")}>
-                  Log in with Google
-                </button>
-                <button className="login-btn" onClick={() => handleFederatedLogin("Facebook")}>
-                  Log in with Facebook
-                </button>
-                <button className="login-btn" onClick={() => handleFederatedLogin({ customProvider: "Microsoft" })}>
-                  Log in with Microsoft
-                </button>
+                <ThirdPartyButton provider="Google" onClick={() => handleFederatedLogin("Google")} />
+                <ThirdPartyButton provider="Facebook" onClick={() => handleFederatedLogin("Facebook")} />
+                <ThirdPartyButton provider="Microsoft" onClick={() => handleFederatedLogin("Microsoft")} />
               </div>
               <div className="divider">or continue with email</div>
               <EmailLoginForm />

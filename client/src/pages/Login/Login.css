@@ -187,3 +187,41 @@
 .text-button:hover {
   text-decoration: none;
 }
+@media (max-width: 700px) {
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+.provider-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.login-btn.third-party {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.login-btn.google {
+  background-color: #000000;
+}
+
+.login-btn.facebook {
+  background-color: #1877f2;
+}
+
+.login-btn.microsoft {
+  background-color: #666;
+}
