@@ -50,7 +50,7 @@ function SignUpForm() {
         <button className="login-btn" onClick={() => handleFederatedSignUp("Facebook")}>
           Sign Up with Facebook
         </button>
-        <button className="login-btn" onClick={() => handleFederatedSignUp("Microsoft")}>
+        <button className="login-btn" onClick={() => handleFederatedSignUp({ customProvider: "Microsoft" })}>
           Sign Up with Microsoft
         </button>
       </div>
@@ -112,7 +112,7 @@ export default function Login() {
                 <button className="login-btn" onClick={() => handleFederatedLogin("Facebook")}>
                   Log in with Facebook
                 </button>
-                <button className="login-btn" onClick={() => handleFederatedLogin("Microsoft")}>
+                <button className="login-btn" onClick={() => handleFederatedLogin({ customProvider: "Microsoft" })}>
                   Log in with Microsoft
                 </button>
               </div>

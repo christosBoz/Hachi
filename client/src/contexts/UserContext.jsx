@@ -5,7 +5,7 @@ import {
   fetchAuthSession,
   signOut as amplifySignOut,
 } from "aws-amplify/auth";
-import { Hub } from "aws-amplify/utils";
+import { Hub } from '@aws-amplify/core';
 
 const UserContext = createContext();
 
